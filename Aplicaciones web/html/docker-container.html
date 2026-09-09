@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Los metadatos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Información sobre los contenedores Docker">
+    <meta name="keywords" content="Docker, contenedores, Docker Compose">
+    <meta name="author" content="bexzuny">
+
+    <link href="../css/styles.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../resources/docker_alt_macos_bigsur_icon_190232.ico"
+        alt="Logotipo de docker">
+    <title>Docker - Container</title>
+</head>
+
+<body>
+    <header id="titulo">
+        <h1>DOCKER CONTAINER'S</h1>
+    </header>
+
+    <main class="principal">
+        <section class="divcont">
+            <div class="card">
+            <h2 class="titulocont">¿Qué es un contenedor?</h2>
+                </div>
+            <div class="card">
+                <p>
+                    Un contenedor Docker es una instancia ejecutable de una imagen.
+                    Permite ejecutar una aplicación junto con sus dependencias
+                    dentro de un entorno aislado.
+                </p>
+            </div>
+        </section>
+
+        <section class="divc">
+            <h2>Imagen vs Contenedor</h2>
+
+            <div class="divcont divcontinside">
+            <div class="card">
+            <h3>Imagen</h3>
+                <ul>
+                    <li>Es una plantilla para crear contenedores.</li>
+                    <li>Contiene la aplicación y sus dependencias.</li>
+                    <li>No cambia mientras se utiliza.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Contenedor</h3>
+                    <ul>
+                        <li>Es una instancia de una imagen.</li>
+                        <li>Se puede iniciar, detener, modificar y eliminar.</li>
+                        <li>Ejecuta la aplicación.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p>Imagen > Contenedor > Aplicación ejecutándose</p>
+        </section>
+
+        <section class="divc">
+            <h2>¿Qué tiene un contenedor?</h2>
+            <p>Un contenedor puede incluir:</p>
+            <div class="divcont divcontinside">
+            <div class="card">
+            <h3>Aplicación:</h3>
+            <p>El programa que queremos ejecutar.</p>
+            </div>
+            <div class="card">
+            <h3>Dependencias:</h3>
+            <p>Librerías y herramientas necesarias.</p>
+            </div>
+            <div class="card">
+            <h3>Aplicación:</h3>
+            <p>El programa que queremos ejecutar.</p>
+            </div>
+            <div class="card">
+            <h3>Configuración:</h3>
+            <p>Variables de entorno y otros parámetros.</p>
+            </div>
+            <div class="card">
+            <h3>Sistema de archivos:</h3>
+            <p>Archivos necesarios para que la aplicación funcione.</p>
+            </div>
+            </div>
+            <p>El contenedor no necesita llevar un sistema operativo completo, lo que ayuda a que sea mucho más ligero que una máquina virtual.</p>
+        </section>
+
+        <section class="divc">
+            <h2>Ciclo de vida</h2>
+            <div class="divcont divcontinside">
+            <div class="card">
+            <h3>Create:</h3>
+            <p>Se crea el contenedor.</p>
+            </div>
+            <p>></p>
+            <div class="card">
+            <h3>Start:</h3>
+            <p>Se inicia.</p>
+            </div>
+                        <p>></p>
+
+            <div class="card">
+            <h3>Running:</h3>
+            <p>La aplicación esta ejecutándose.</p>
+            </div>
+                        <p>></p>
+
+            <div class="card">
+            <h3>Stop:</h3>
+            <p>Se detiene.</p>
+            </div>
+                        <p>></p>
+
+            <div class="card">
+            <h3>Remove:</h3>
+            <p>Se elimina el contenedor.</p>
+            </div>
+            </div>
+            <p>Con docker run, normalmente se crea y se inicia el contenedor directamente.</p>
+        </section>
+
+
+        <section class="divc">
+            <h2>Comandos básicos</h2>
+            <table>
+                <tr>
+                    <th style="width:20%">Accion</th>
+                    <th>Comando</th>
+                    <th>Descripcion</th>
+                </tr>
+                <tr>
+                    <td>Crear y ejecutar</td>
+                    <td>docker run nginx</td>
+                    <td>Crea un contenedor a partir de la imagen nginx y lo inicia.</td>
+                </tr>
+                <tr>
+                    <td>Ver contenedores activos</td>
+                    <td>docker ps</td>
+                    <td>Muestra los contenedores que están ejecutándose.</td>
+                </tr>
+                <tr>
+                    <td>Ver contenedores inactivos</td>
+                    <td>docker ps -a</td>
+                    <td>Muestra los contenedores.</td>
+                </tr>
+                <tr>
+                    <td>Detener</td>
+                    <td>docker stop nombre_contenedor</td>
+                    <td>Detiene un contenedor que está ejecutándose.</td>
+                </tr>
+                <tr>
+                    <td>Iniciar</td>
+                    <td>docker start nombre_contenedor</td>
+                    <td>Vuelve a iniciar un contenedor detenido.</td>
+                </tr>
+                <tr>
+                    <td>Eliminar</td>
+                    <td>docker rm nombre_contenedor</td>
+                    <td>Elimina un contenedor detenido.</td>
+                </tr>
+            </table>
+        </section>
+        <section class="divc" id="secimg">
+            <h2>También te puede interesar</h2>
+
+            <table>
+                <tr>
+                    <td>
+                        <a href="index.html">
+                            <img src="../resources/docker_alt_macos_bigsur_icon_190232.ico" alt="Información sobre Docker">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="docker-container.html">
+                            <h2>docker</h2>
+                        </a>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <a href="docker-compose.html">
+                            <img src="../resources/images-_2_.webp" alt="Información sobre Docker Compose">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="docker-compose.html">
+
+                            <h2>docker compose</h2>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </main>
+
+</body>
+<footer>
+    <p>© 2026 bexzunny</p>
+    <img src="../resources/Docker_image.webp" id="footdocker">
+</footer>
+
+</html>
