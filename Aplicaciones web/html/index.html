@@ -22,104 +22,124 @@
 
     <main class="principal">
         <section class="divc">
-        <h2>¿Qué es docker?</h2>
-        <p><b>Docker</b> es una plataforma que permite desarrollar, empaquetar, distribuir y ejecutar aplicaciones
-            dentro de <b>contenedores</b>.</p>
-        <br>
-        <p>Un contenedor incluye la <b>aplicación</b> junto con sus <b>dependencias y configuraciones</b> necesarias
-            para ejecutarse de forma consistente en diferentes entornos.</p><br>
-        <p>La idea principal es:</p><q>Construye una vez y ejecuta de forma consistente en cualquier entorno compatible
-            con Docker.</q>
+            <h2>¿Qué es docker?</h2>
+            <p><b>Docker</b> es una plataforma que permite desarrollar, empaquetar, distribuir y ejecutar aplicaciones
+                dentro de <b>contenedores</b>.</p>
+            <br>
+            <p>Un contenedor incluye la <b>aplicación</b> junto con sus <b>dependencias y configuraciones</b> necesarias
+                para ejecutarse de forma consistente en diferentes entornos.</p><br>
+            <p>La idea principal es:</p><q>Construye una vez y ejecuta de forma consistente en cualquier entorno
+                compatible
+                con Docker.</q>
         </section>
 
         <section class="divc">
-        <h2>¿Para qué sirve?</h2>
+            <h2>¿Para qué sirve?</h2>
 
-        <h3>Docker facilita:</h3>
-        <ul>
-            <li>Desarrollo de aplicaciones.</li>
-            <li>Pruebas en entornos aislados.</li>
-            <li>Despliegue de aplicaciones.</li>
-            <li>Distribución de software.</li>
-            <li>Creación de entornos reproducibles.</li>
-            <li>Ejecución de múltiples servicios en un mismo equipo.</li>
-        </ul>
-        <p>Por ejemplo, puedes tener:</p>
-        <ul>
-            <li>Node.js</li>
-            <li>Aplicación</li>
-            <li>PostgreSQL</li>
-            <li>Redis</li>
-        </ul>
-        <p>Cada componente puede ejecutarse en su propio contenedor.</p>
+            <h3>Docker facilita:</h3>
+            <ul>
+                <li>Desarrollo de aplicaciones.</li>
+                <li>Pruebas en entornos aislados.</li>
+                <li>Despliegue de aplicaciones.</li>
+                <li>Distribución de software.</li>
+                <li>Creación de entornos reproducibles.</li>
+                <li>Ejecución de múltiples servicios en un mismo equipo.</li>
+            </ul>
+            <p>Por ejemplo, puedes tener:</p>
+            <ul>
+                <li>Node.js</li>
+                <li>Aplicación</li>
+                <li>PostgreSQL</li>
+                <li>Redis</li>
+            </ul>
+            <p>Cada componente puede ejecutarse en su propio contenedor.</p>
         </section>
 
         <section class="divc">
-        <h2>Conceptos fundamentales</h2>
-        <table>
-            <tr>
-                <th style="width:20%">Concepto</th>
-                <th>Descripción</th>
-            </tr>
-            <tr>
-                <td>Imagen</td>
-                <td>Plantilla utilizada para crear contenedores.</td>
-            </tr>
-            <tr>
-                <td>Contenedor</td>
-                <td>Instancia ejecutable de una imagen.</td>
-            </tr>
-            <tr>
-                <td>Dockerfile</td>
-                <td>Archivo con instrucciones para construir una imagen.</td>
-            </tr>
-            <tr>
-                <td>Registry</td>
-                <td>Almacén de imágenes, como Docker Hub.</td>
-            </tr>
-            <tr>
-                <td>Volumen</td>
-                <td>Permite almacenar datos fuera del ciclo de vida del contenedor.</td>
-            </tr>
-            <tr>
-                <td>Red</td>
-                <td>Permite la comunicación entre contenedores.</td>
-            </tr>
-        </table>
+            <h2>Conceptos fundamentales</h2>
+            <table>
+                <tr>
+                    <th style="width:20%">Concepto</th>
+                    <th>Descripción</th>
+                </tr>
+                <tr>
+                    <td>Imagen</td>
+                    <td>Plantilla utilizada para crear contenedores.</td>
+                </tr>
+                <tr>
+                    <td>Contenedor</td>
+                    <td>Instancia ejecutable de una imagen.</td>
+                </tr>
+                <tr>
+                    <td>Dockerfile</td>
+                    <td>Archivo con instrucciones para construir una imagen.</td>
+                </tr>
+                <tr>
+                    <td>Registry</td>
+                    <td>Almacén de imágenes, como Docker Hub.</td>
+                </tr>
+                <tr>
+                    <td>Volumen</td>
+                    <td>Permite almacenar datos fuera del ciclo de vida del contenedor.</td>
+                </tr>
+                <tr>
+                    <td>Red</td>
+                    <td>Permite la comunicación entre contenedores.</td>
+                </tr>
+            </table>
         </section>
 
         <section class="divc">
-        <h2>Docker vs. Máquina virtual</h2>
-        <table>
-            <tr>
-                <th style="width:20%">Docker</th>
-                <th>Máquina virtual</th>
-            </tr>
-            <tr>
-                <td>Comparte el kernel del sistema anfitrión</td>
-                <td>Tiene un sistema operativo completo</td>
-            </tr>
-            <tr>
-                <td>Consume menos recursos</td>
-                <td>Consume más recursos</td>
-            </tr>
-            <tr>
-                <td>Inicio rápido</td>
-                <td>Inicio más lento</td>
-            </tr>
-            <tr>
-                <td>Contenedores ligeros</td>
-                <td>Máquinas virtuales más pesadas</td>
-            </tr>
-            <tr>
-                <td>Aislamiento a nivel de procesos</td>
-                <td>Aislamiento mediante virtualización</td>
-            </tr>
-        </table>
+            <h2>Docker vs. Máquina virtual</h2>
+            <table>
+                <tr>
+                    <th style="width:20%">Docker</th>
+                    <th>Máquina virtual</th>
+                </tr>
+                <tr>
+                    <td>Comparte el kernel del sistema anfitrión</td>
+                    <td>Tiene un sistema operativo completo</td>
+                </tr>
+                <tr>
+                    <td>Consume menos recursos</td>
+                    <td>Consume más recursos</td>
+                </tr>
+                <tr>
+                    <td>Inicio rápido</td>
+                    <td>Inicio más lento</td>
+                </tr>
+                <tr>
+                    <td>Contenedores ligeros</td>
+                    <td>Máquinas virtuales más pesadas</td>
+                </tr>
+                <tr>
+                    <td>Aislamiento a nivel de procesos</td>
+                    <td>Aislamiento mediante virtualización</td>
+                </tr>
+            </table>
         </section>
+        <section class="divc" id="secimg">
+            <h2>También te puede interesar</h2>
 
-</main>
+            <a href="docker-container.html">
+                <img src="../resources/images-_1_.webp" alt="Información sobre Docker Container">
+                <h2>docker container</h2>
+            </a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="docker-compose.html">
+                <img src="../resources/images-_2_.webp" alt="Información sobre Docker Compose">
+                <h2>docker compose</h2>
+            </a>
+        </section>
+    </main>
 
 </body>
+<footer>
+    <p>© 2026 bexzunny</p>
+    <img src="../resources/Docker_image.webp" id="footdocker">
+</footer>
 
 </html>
