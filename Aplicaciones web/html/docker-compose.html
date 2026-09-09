@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Los metadatos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Información sobre Docker compose, levantar servicios">
+    <meta name="keywords" content="Docker, contenedores, Docker Compose">
+    <meta name="author" content="bexzuny">
+
+    <link href="../css/styles.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../resources/docker_alt_macos_bigsur_icon_190232.ico"
+        alt="Logotipo de docker">
+    <title>Docker - Compose</title>
+</head>
+
+<body>
+    <header id="titulo">
+        <h1>DOCKER COMPOSE</h1>
+    </header>
+
+    <main class="principal">
+        <section class="divc">
+            <h2>¿Qué es Docker Compose?</h2>
+            <p>Docker Compose es una herramienta que permite <b>definir, configurar y ejecutar </b>aplicaciones formadas
+                por <b>múltiples contenedores</b>.</p>
+            <br>
+            <p>La configuración de los servicios se almacena en un archivo llamado <b><i>compose.yaml</i></b>, donde se
+                pueden establecer <b>imágenes, puertos, redes, volúmenes, variables de entorno y dependencias</b>.</p>
+
+        </section>
+
+        <section class="divc">
+            <h2>¿Para qué sirve?</h2>
+
+            <ul>
+                <li>Gestionar varios contenedores como una sola aplicación.</li>
+                <li>Centralizar la configuración en un archivo.</li>
+                <li>Crear redes para permitir la comunicación entre servicios.</li>
+                <li>Administrar volúmenes para conservar datos.</li>
+                <li>Iniciar y detener todos los servicios con pocos comandos.</li>
+            </ul>
+        </section>
+
+        <section class="divc">
+            <h2>Archivo <i>compose.yaml</i></h2>
+            <p>El archivo <i>compose.yaml</i> describe los servicios que forman parte de la aplicación.</p>
+            <p>En él se puede indicar:</p>
+            <ul>
+                <li>La imagen que utilizará cada servicio.</li>
+                <li>Los puertos.</li>
+                <li>Las variables de entorno.</li>
+                <li>Los volúmenes.</li>
+                <li>Las dependencias entre servicios.</li>
+            </ul>
+        </section>
+
+        <section class="divc">
+            <h2>Servicios</h2>
+            <p>En Docker Compose, cada servicio representa un componente de la aplicación y normalmente se ejecuta en su
+                propio contenedor.</p>
+
+            <table>
+                <tr>
+                    <th style="width:20%">Servicio</th>
+                    <th>Función</th>
+                </tr>
+                <tr>
+                    <td>Backend</td>
+                    <td>Ejecuta la lógica de la aplicación</td>
+                </tr>
+                <tr>
+                    <td>MySQL</td>
+                    <td>Almacena los datos</td>
+                </tr>
+                <tr>
+                    <td>phpMyAdmin</td>
+                    <td>Permite administrar MySQL mediante una interfaz web</td>
+                </tr>
+            </table>
+            <p>Los servicios pueden comunicarse entre sí mediante la red creada por Docker Compose.</p>
+        </section>
+
+        <section class="divc">
+            <h2>Ejemplo</h2>
+            <div id="terminal">
+                <pre>
+services:
+
+  backend:
+    image: mi-backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
+</pre>
+            </div>
+            <p>En ejecucion:</p>
+            <ul>
+                <li>backend depende de mysql.</li>
+                <li>phpmyadmin depende de mysql.</li>
+                <li>mysql_data permite conservar los datos de MySQL.</li>
+                <li>Los servicios pueden comunicarse utilizando la red de Compose.</li>
+            </ul>
+        </section>
+
+
+        <section class="divc">
+            <h2>Comandos básicos</h2>
+            <table>
+                <tr>
+                    <th style="width:20%">Accion</th>
+                    <th>Comando</th>
+                    <th>Descripcion</th>
+                </tr>
+                <tr>
+                    <td>Iniciar los servicios</td>
+                    <td class="codigo">docker compose up</td>
+                    <td>Crea e inicia los servicios definidos en compose.yaml.</td>
+                </tr>
+                <tr>
+                    <td>Iniciar en segundo plano</td>
+                    <td class="codigo">docker compose up -d</td>
+                    <td>Ejecuta los servicios sin mantenerlos ocupando la terminal.</td>
+                </tr>
+                <tr>
+                    <td>Ver los servicios</td>
+                    <td class="codigo">docker compose ps</td>
+                    <td>Muestra el estado de los servicios del proyecto.</td>
+                </tr>
+                <tr>
+                    <td>Detener los servicios</td>
+                    <td class="codigo">docker compose stop</td>
+                    <td>Detiene los servicios sin eliminarlos.</td>
+                </tr>
+                <tr>
+                    <td>Detener y eliminar</td>
+                    <td class="codigo">docker compose down</td>
+                    <td>Detiene y elimina los contenedores y redes creados por Compose.</td>
+                </tr>
+                <tr>
+                    <td>Eliminar</td>
+                    <td class="codigo">docker rm nombre_contenedor</td>
+                    <td>Elimina un contenedor detenido.</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="divc">
+            <h2>Ventaja principal</h2>
+            <p>Docker Compose facilita la <b>administración</b> de aplicaciones que utilizan varios contenedores, ya que permite definir sus servicios y configuración en un solo archivo.</p>
+            <br>
+            <p>De esta manera, es posible <i>iniciar, detener y administrar</i> los contenedores de un proyecto de forma conjunta mediante comandos sencillos.</p>
+
+        </section>
+
+
+        <section class="divc" id="secimg">
+            <h2>También te puede interesar</h2>
+
+            <table>
+                <tr>
+                    <td>
+                        <a href="index.html">
+                            <img src="../resources/docker_alt_macos_bigsur_icon_190232.ico"
+                                alt="Información sobre Docker">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="docker-container.html">
+                            <h2>docker</h2>
+                        </a>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <a href="docker-container.html">
+                            <img src="../resources/images-_1_.webp" alt="Información sobre Docker Container">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="docker-container.html">
+
+                            <h2>docker container</h2>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </main>
+
+</body>
+<footer>
+    <p>© 2026 bexzunny</p>
+    <img src="../resources/Docker_image.webp" id="footdocker">
+</footer>
+
+</html>
