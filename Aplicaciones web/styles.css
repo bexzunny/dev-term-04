@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+CA+Guides&display=swap');
+:root{
+    --amarillo: #e1e410;
+    --verde: #00f829;
+    --cafe: #583030;
+    --rosa: #ff5ef2;
+    --rojo: #f60000;
+    --azul: #05f8fc;
+    --narajna: #ff6600;
+    --morado: #9501fe;
+    --txtcolor: #0e0d0d;
+    --bgcolor:#fff;
+    --background: #343131;
+}
+
+.ajch_divmain.modo_transparente{
+    --amarillo: #e1e4102c;
+    --verde: #00f8292c;
+    --cafe: #5830302c;
+    --rosa: #ff5ef22c;
+    --rojo: #f600002c;
+    --azul: #05f8fc2c;
+    --narajna: #ff66002c;
+    --morado: #9501fe2c;
+    --txtcolor: #fff;
+    --bgcolor:#2e2424;
+    --background: #bcbcbc;
+}
+
+.ajch_divmain{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background);
+}
+.ajch_divsub{
+    height: 15rem;
+    width: 50%;
+    border-radius: 15px;
+
+}
+
+
+.ajch_amarillo{
+    background-color: var(--amarillo);
+}
+.ajch_rojo{
+    background-color: var(--rojo);
+}
+.ajch_rosa{
+    background-color: var(--rosa);
+}
+.ajch_naranja{
+    background-color: var(--narajna);
+}
+.ajch_verde{
+    background-color: var(--verde);
+}
+.ajch_azul{
+    background-color: var(--azul);
+}
+.ajch_cafe{
+    background-color: var(--cafe);
+}
+.ajch_morado{
+    background-color: var(--morado);
+}
+
+h1{
+    color: var(--txtcolor);
+    font-size: 3rem;
+}
+
+#ajch_d1:hover{
+    background-color: var(--bgcolor);
+}
+#ajch_d2:hover{
+    font-size: 2rem;    
+    height: auto;
+}
+#ajch_d3:hover{
+    width: 100%;
+}
+#ajch_d4:hover{
+    padding: 2rem 2rem 2rem 2rem ;
+}
+#ajch_d5:hover{
+    background-color: var(--txtcolor);
+    color: var(--verde);
+}
+#ajch_d5:hover h1{
+    color: var(--verde);
+}
+#ajch_d6:hover{
+    box-shadow: 0 40px 60px #090909;
+}
+#ajch_d7:hover{
+    height: 20rem;
+}
+#ajch_d8:hover h1{
+
+  font-family: "Playwrite CA Guides", cursive;
+  font-weight: 400;
+  font-style: normal;
+
+}
+#ajch_d8:hover p{
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+#ajch_d8:hover {
+  height: auto;
+}
+
+
+
+#ajch_btn_cambio{
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+    border-radius: 10px;
+    border: 1px solid var(--txtcolor);
+    transition: background-color 0.5s ease-in-out;
+}
+@media screen and (max-width: 1024px) {
+        .div_flexhijo{
+            width: 45%;
+        }
+
+}
+
+@media screen and (max-width: 768px) {
+    .ajch_divmain{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .ajch_divsub{
+        height: 15rem;
+        width: 50%;
+        border-radius: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .ajch_divmain{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .ajch_divsub{
+        height: 15rem;
+        width: 100%;
+        border-radius: 15px;
+    }
+        h1{
+            font-size: 1.7rem;
+        }
+        p, label, input, textarea, .btn{
+            font-size: 1rem;
+        }
+}
