@@ -1,0 +1,170 @@
+:root{
+    --amarillo: #e1e410;
+    --verde: #00f829;
+    --cafe: #583030;
+    --rosa: #ff5ef2;
+    --rojo: #f60000;
+    --azul: #05f8fc;
+    --narajna: #ff6600;
+    --morado: #9501fe;
+    --txtcolor: #0e0d0d;
+    --bgcolor:#fff;
+}
+
+.div_flex.modo_transparente{
+    --amarillo: #e1e4102c;
+    --verde: #00f8292c;
+    --cafe: #5830302c;
+    --rosa: #ff5ef22c;
+    --rojo: #f600002c;
+    --azul: #05f8fc2c;
+    --narajna: #ff66002c;
+    --morado: #9501fe2c;
+    --txtcolor: #fff;
+    --bgcolor:#2e2424;
+}
+
+.div_flex{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.div_flexhijo{
+    height: 10rem;
+    width: 16%;
+    border-radius: 15px;
+    padding: 1rem;
+    transition: transform 0.5s ease-in-out;
+
+    display: flex;
+    justify-content: center;
+}
+
+.div_flexhijo imag{
+    width: 100%;
+    border-radius: 15px;
+}
+.amarillo{
+    background-color: var(--amarillo);
+}
+.rojo{
+    background-color: var(--rojo);
+}
+.rosa{
+    background-color: var(--rosa);
+}
+.naranja{
+    background-color: var(--narajna);
+}
+.verde{
+    background-color: var(--verde);
+}
+.azul{
+    background-color: var(--azul);
+}
+.cafe{
+    background-color: var(--cafe);
+}
+.morado{
+    background-color: var(--morado);
+}
+.formulario{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: justify;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px #090909;
+    margin: 2rem 0rem;
+}
+label{
+    width: 100%;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--txtcolor);
+}
+input{
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--txtcolor);
+    border-radius: 4px;
+    font-size: 1.2rem;
+}
+h1{
+    color: var(--txtcolor);
+    font-size: 3rem;
+}
+.btn{
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+    border-radius: 10px;
+    border: 1px solid var(--txtcolor);
+    transition: background-color 0.5s ease-in-out;
+}
+.btn:hover{
+    cursor: pointer;
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+    border-radius: 10px;
+    border: 1px solid var(--txtcolor);
+}
+
+
+p{
+    color: var(--txtcolor);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+}
+header{
+    padding: 1rem;
+}
+#respuesta{
+    font-size: 1.5rem;
+    color: var(--txtcolor);
+    height: 2rem;
+}
+.div_main{
+    text-align: center;
+    margin: 2rem 0rem 4rem 0rem;
+}
+form{
+    width: 100%;
+    display:flex;
+    flex-wrap: wrap;
+}
+@media screen and (max-width: 1024px) {
+        .div_flexhijo{
+            width: 45%;
+        }
+
+}
+
+@media screen and (max-width: 768px) {
+        .div_flexhijo{
+            width: 75%;
+        }
+        .div_flex{
+            justify-content: center;    
+        }
+}
+
+@media screen and (max-width: 1024px) {
+        .div_flexhijo{
+            width: 90%;
+        }
+        .formulario{
+            width: 90%;
+        }
+        h1{
+            font-size: 1.7rem;
+        }
+        p, label, input, textarea, .btn{
+            font-size: 1rem;
+        }
+}
