@@ -1,300 +1,421 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title></title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="css/style.css" rel="stylesheet" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-sm bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse me-5" id="navbarNavAltMarkup">
-          <div class="navbar-nav ms-auto">
-            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-            <a class="nav-link" href="#">Catalogo</a>
-            <a class="nav-link" href="#">Taller</a>
-            <a class="nav-link" href="#">Nosotros</a>
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <title></title>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous"
+      />
+      <link
+    href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+    rel="stylesheet"
+>
+            <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-sm bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">ODDJOB</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse me-5" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+              <a class="nav-link" href="#">Catalogo</a>
+              <a class="nav-link" href="#">Taller</a>
+              <a class="nav-link" href="#">Nosotros</a>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
-
-    <div class="container-fluid">
-      <div class="row g-2">
-        <div class="col-12 col-sm-6">
-          <img src="..." alt="Fundador de ODD Job" />
-        </div>
-        <div class="col-12 col-sm-6">
-          <header>
-            <p>ODDJOB INVENTIONS PRESENTA</p>
-
-            <h1>Ideas brillantes. Resultados cuestionables.</h1>
-
-            <p>
-              Bienvenido a Oddjob Inventions, donde las ideas imposibles se
-              convierten en inventos cuestionables. Resolvemos problemas que
-              nunca supiste que tenías, con tecnología que nadie comprende del
-              todo.
-            </p>
-
-            <a href="pages/catalogo.html">Explorar inventos</a>
-          </header>
-        </div>
-      </div>
-    </div>
-
-    <!-- PRESENTACIÓN PRINCIPAL -->
-
-    <!-- INVENTOS DESTACADOS -->
-    <section id="inventos-destacados" class="container py-5">
-      <div class="row">
-        <div class="col-12">
-          <p>RECIÉN SALIDOS DEL LABORATORIO</p>
-
-          <h2>Inventos destacados</h2>
-
-          <p>
-            Fabricados en nuestros laboratorios, probados contra la realidad y
-            aprobados por absolutamente nadie.
-          </p>
-        </div>
-      </div>
-
-      <div class="container-fluid">
-        <div class="row g-4 ">
-
-
-          <!--Las cards-->
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card">
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h3 class="card-title">El Procrastinador 3000</h3>
-              <p class="card-text">
-                Un dispositivo revolucionario que pospone tus tareas hasta que
-                mágicamente se convierten en problema de alguien más.
-              </p>
-              <p class="fw-bold">Precio: $149.50</p>
-              <a href="#" class="btn btn-primary">Examinar invento</a>
-            </div>
-            </article>
-          </div>
-
-          <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card">
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h3 class="card-title">Trapeador Automático Supremo</h3>
-              <p class="card-text">
-                Un trapeador autónomo que limpia el suelo, las paredes y,
-          ocasionalmente, el techo del vecino.
-              </p>
-              <p class="fw-bold">Precio: $149.50</p>
-              <a href="#" class="btn btn-primary">Examinar invento</a>
-            </div>
-            </article>
-          </div>
-
-
-                    <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card">
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h3 class="card-title">El Modulador de Ánimo</h3>
-              <p class="card-text">
-                Detecta tu estado de ánimo y adapta la habitación. Sus efectos
-          secundarios incluyen iluminación dramática y música de jazz.
-              </p>
-              <p class="fw-bold">Precio: $219.00</p>
-              <a href="#" class="btn btn-primary">Examinar invento</a>
-            </div>
-            </article>
-          </div>
-
-
-                    <div class="col-12 col-sm-6 col-lg-3">
-            <article class="card">
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h3 class="card-title">Agujero Negro Portátil</h3>
-              <p class="card-text">
-                La solución definitiva para almacenar cosas. Guarda tu desorden aquí.
-          Encontrarlo de nuevo es opcional.
-              </p>
-              <p class="fw-bold">Precio: $499.99</p>
-              <a href="#" class="btn btn-primary">Examinar invento</a>
-            </div>
-            </article>
-          </div>
-
-        </div><!--row g-4-->
-      </div>
-
-
-    <!-- POR QUÉ ODDJOB -->
-    <section id="por-que-oddjob">
-      <p>EL MÉTODO DETRÁS DE LA LOCURA</p>
-
-      <h2>¿Por qué Oddjob?</h2>
-
-      <p>
-        Porque las soluciones ordinarias son demasiado predecibles. Preferimos
-        hacer que el futuro sea un poco más extraño.
-      </p>
-
-      <article>
-        <h3>Creatividad sin límites</h3>
-
-        <p>
-          Convertimos ideas descabelladas en prototipos que hacen cuestionar su
-          carrera profesional hasta al ingeniero más experimentado.
-        </p>
-      </article>
-
-      <article>
-        <h3>Ingeniería cuestionable</h3>
-
-        <p>
-          Cada invento se construye con precisión, perseverancia y una cantidad
-          sospechosa de piezas de repuesto.
-        </p>
-      </article>
-
-      <article>
-        <h3>Tecnología del futuro</h3>
-
-        <p>
-          La tecnología del mañana, disponible hoy. Los manuales de ayer se
-          venden por separado.
-        </p>
-      </article>
-
-      <article>
-        <h3>Soluciones inesperadas</h3>
-
-        <p>
-          Resolvemos problemas cotidianos con dispositivos extraordinarios,
-          aunque nadie nos haya pedido hacerlo.
-        </p>
-      </article>
-    </section>
-
-    <!-- TESTIMONIOS DE CLIENTES -->
-    <section id="testimonios">
-      <p>PALABRAS DESDE EL CAMPO DE PRUEBAS</p>
-
-      <h2>¿Y qué dicen nuestros clientes?</h2>
-
-      <p>
-        No tienes que creernos a nosotros. Estos clientes completamente
-        legítimos tienen algo que contar.
-      </p>
-
-      <article>
-        <blockquote>
-          Compré el Procrastinador 3000 hace tres meses. Mañana escribiré una
-          reseña como se debe.
-        </blockquote>
-
-        <p>— Harold P., procrastinador profesional</p>
-      </article>
-
-      <article>
-        <blockquote>
-          El trapeador limpió mi cocina, el pasillo y la mitad de mi jardín.
-          Cinco estrellas por su entusiasmo.
-        </blockquote>
-
-        <p>— Mildred W., propietaria preocupada</p>
-      </article>
-
-      <article>
-        <blockquote>
-          El Modulador de Ánimo convirtió una cena tranquila en una película de
-          detectives. Nunca me había sentido tan misterioso mientras comía sopa.
-        </blockquote>
-
-        <p>— Vincent R., sofisticado aficionado</p>
-      </article>
-
-      <article>
-        <blockquote>
-          Metí todos mis documentos en el Agujero Negro Portátil. Mi escritorio
-          nunca había lucido tan bien.
-        </blockquote>
-
-        <p>— Clara B., Departamento de Decisiones Cuestionables</p>
-      </article>
-    </section>
-
-    <!-- LLAMADA A LA ACCIÓN -->
-    <section id="presenta-tu-invento">
-      <h2>¿Tienes una idea brillantemente absurda?</h2>
-
-      <p>
-        Todo gran invento comienza cuando alguien pregunta: «¿Qué podría salir
-        mal?». Nos encantaría descubrirlo.
-      </p>
-
-      <a href="pages/taller.html">Presenta tu invento</a>
-    </section>
-
-    <!-- PIE DE PÁGINA -->
-    <footer>
-      <p>ODDJOB INVENTIONS</p>
-
-      <p>Complicando innecesariamente lo imposible desde 1937½.</p>
-
-      <nav aria-label="Navegación del pie de página">
-        <a href="index.html">Inicio</a>
-        <a href="pages/catalogo.html">Catálogo</a>
-        <a href="pages/taller.html">Taller</a>
-        <a href="pages/nosotros.html">Nosotros</a>
-        <a href="pages/contacto.html">Contacto</a>
       </nav>
 
-      <p>
-        © 2026 Oddjob Inventions. Todos los inventos están sujetos a pruebas
-        cuestionables.
-      </p>
+<!-- PRESENTACIÓN PRINCIPAL -->
+<div id="presentacion-principal" class="container-fluid">
+    <div class="row g-2">
+        <div class="col-12 col-sm-6">
+            <img src="..." alt="Fundador de ODD Job" />
+        </div>
 
-      <p>Diseñado por Adair.</p>
-    </footer>
+        <div class="col-12 col-sm-6">
+            <header>
+                <p>ODDJOB INVENTIONS PRESENTA</p>
+                <h1>Ideas brillantes. Resultados cuestionables.</h1>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
-      integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-</html>
+                <p>
+                    Bienvenido a Oddjob Inventions, donde las ideas imposibles
+                    se convierten en inventos cuestionables. Resolvemos problemas
+                    que nunca supiste que tenías, con tecnología que nadie
+                    comprende del todo.
+                </p>
+
+                <a href="pages/catalogo.html">Explorar inventos</a>
+            </header>
+        </div>
+    </div>
+</div>
+
+      <!-- PRESENTACIÓN PRINCIPAL -->
+
+      <!-- INVENTOS DESTACADOS -->
+      <section id="inventos-destacados" class="container py-5">
+        <div class="row">
+          <div class="col-12">
+            <p>RECIÉN SALIDOS DEL LABORATORIO</p>
+
+            <h2>Inventos destacados</h2>
+
+            <p>
+              Fabricados en nuestros laboratorios, probados contra la realidad y
+              aprobados por absolutamente nadie.
+            </p>
+          </div>
+        </div>
+
+        <div class="container-fluid">
+          <div class="row g-4 ">
+
+
+            <!--Las cards-->
+            <div class="col-12 col-sm-6 col-lg-3">
+              <article class="card">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h3 class="card-title">El Procrastinador 3000</h3>
+                <p class="card-text">
+                  Un dispositivo revolucionario que pospone tus tareas hasta que
+                  mágicamente se convierten en problema de alguien más.
+                </p>
+                <p class="fw-bold">Precio: $149.50</p>
+                <a href="#" class="btn btn-primary">Examinar invento</a>
+              </div>
+              </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3">
+              <article class="card">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h3 class="card-title">Trapeador Automático Supremo</h3>
+                <p class="card-text">
+                  Un trapeador autónomo que limpia el suelo, las paredes y,
+            ocasionalmente, el techo del vecino.
+                </p>
+                <p class="fw-bold">Precio: $149.50</p>
+                <a href="#" class="btn btn-primary">Examinar invento</a>
+              </div>
+              </article>
+            </div>
+
+
+                      <div class="col-12 col-sm-6 col-lg-3">
+              <article class="card">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h3 class="card-title">El Modulador de Ánimo</h3>
+                <p class="card-text">
+                  Detecta tu estado de ánimo y adapta la habitación. Sus efectos
+            secundarios incluyen iluminación dramática y música de jazz.
+                </p>
+                <p class="fw-bold">Precio: $219.00</p>
+                <a href="#" class="btn btn-primary">Examinar invento</a>
+              </div>
+              </article>
+            </div>
+
+
+                      <div class="col-12 col-sm-6 col-lg-3">
+              <article class="card">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h3 class="card-title">Agujero Negro Portátil</h3>
+                <p class="card-text">
+                  La solución definitiva para almacenar cosas. Guarda tu desorden aquí.
+            Encontrarlo de nuevo es opcional.
+                </p>
+                <p class="fw-bold">Precio: $499.99</p>
+                <a href="#" class="btn btn-primary">Examinar invento</a>
+              </div>
+              </article>
+            </div>
+
+          </div><!-- row g-4 -->
+        </div><!-- container-fluid -->
+      </section><!-- inventos-destacados -->
+
+      <!-- POR QUÉ ODDJOB -->
+      <section id="por-que-oddjob">
+        <div class="container py-5">
+          <div class="row ">
+        <div class="col-12 col-sm-6">
+            <img src="..." alt="Descripción de nuestro legado.">
+            </div>    
+          
+        <div class="col-12 col-sm-6">
+        <p>EL MÉTODO DETRÁS DE LA LOCURA</p>
+
+        <h2>¿Por qué Oddjob?</h2>
+
+        <p>
+          Porque las soluciones ordinarias son demasiado predecibles. Preferimos
+          hacer que el futuro sea un poco más extraño.
+        </p>
+
+
+        <!--col-->
+  </div>
+        <!--row-->
+
+  </div>
+
+
+
+      </div>
+
+          
+
+
+<div class="container py-5">
+    <div class="row g-4">
+
+        <div class="col-12 col-sm-9" data-aos="fade-right">
+            <article>
+                <h3>Creatividad sin límites</h3>
+                <p>
+                    Convertimos ideas descabelladas en prototipos
+                    que hacen cuestionar su carrera profesional hasta
+                    al ingeniero más experimentado.
+                </p>
+            </article>
+        </div>
+
+        <div class="col-12 col-sm-9" data-aos="fade-left">
+            <article>
+                <h3>Ingeniería cuestionable</h3>
+                <p>
+                    Cada invento se construye con precisión,
+                    perseverancia y una cantidad sospechosa
+                    de piezas de repuesto.
+                </p>
+            </article>
+        </div>
+
+        <div class="col-12 col-sm-9" data-aos="fade-right">
+            <article>
+                <h3>Tecnología del futuro</h3>
+                <p>
+                    La tecnología del mañana, disponible hoy.
+                    Los manuales de ayer se venden por separado.
+                </p>
+            </article>
+        </div>
+
+        <div class="col-12 col-sm-9 text-end" data-aos="fade-left">
+            <article>
+                <h3>Soluciones inesperadas</h3>
+                <p>
+                    Resolvemos problemas cotidianos con dispositivos
+                    extraordinarios, aunque nadie nos haya pedido hacerlo.
+                </p>
+            </article>
+        </div>
+
+    </div>
+</div>
+
+      </section>
+
+      <!-- TESTIMONIOS DE CLIENTES -->
+
+
+  <section id="testimonios"  data-aos="fade-up"
+     data-aos-duration="3000">
+    <div class="container py-5">
+      <div class="row g-2">
+        <div class="col-12 col-sm-6">
+      <p>PALABRAS DESDE EL CAMPO DE PRUEBAS</p>
+      <h2>¿Y qué dicen nuestros clientes?</h2>
+
+      <div id="carouselTestimonios"
+          class="carousel slide"
+          data-bs-ride="carousel">
+
+          <div class="carousel-indicators">
+              <button type="button"
+                      data-bs-target="#carouselTestimonios"
+                      data-bs-slide-to="0"
+                      class="active"
+                      aria-current="true"
+                      aria-label="Diapositiva 1"></button>
+
+              <button type="button"
+                      data-bs-target="#carouselTestimonios"
+                      data-bs-slide-to="1"
+                      aria-label="Diapositiva 2"></button>
+
+              <button type="button"
+                      data-bs-target="#carouselTestimonios"
+                      data-bs-slide-to="2"
+                      aria-label="Diapositiva 3"></button>
+          </div>
+
+          <div class="carousel-inner">
+
+              <div class="carousel-item active">
+                  <div class="p-5 bg-dark text-white text-center">
+                      <h3>Una compra cuestionable</h3>
+                      <p>Compré el Procrastinador 3000. Mañana escribiré una reseña.</p>
+                      <p ><b>Harold P.</b></p>
+                  </div>
+              </div>
+
+              <div class="carousel-item">
+                  <div class="p-5 bg-success text-white text-center">
+                      <h3>Demasiado entusiasmo</h3>
+                      <p>El trapeador limpió mi cocina y la mitad de mi jardín.</p>
+                      <p ><b>Mildred W.</b></p>
+                  </div>
+              </div>
+
+              <div class="carousel-item">
+                  <div class="p-5 bg-dark text-white text-center">
+                      <h3>Una experiencia misteriosa</h3>
+                      <p>Mi cena tranquila terminó pareciendo una película de detectives.</p>
+                      <p ><b>Vincent R.</b></p>
+                  </div>
+              </div>
+
+          </div>
+
+          <button class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselTestimonios"
+                  data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"
+                    aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+          </button>
+
+          <button class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselTestimonios"
+                  data-bs-slide="next">
+              <span class="carousel-control-next-icon"
+                    aria-hidden="true"></span>
+              <span class="visually-hidden">Siguiente</span>
+          </button>
+      </div>
+
+  </div>
+  <div class="col-12 col-sm-6">
+  <img src="..." alt="Nuestro fundador saludando a clientes">
+
+  </div>
+  </div><!--row-->
+
+      </div>
+  </section>
+
+
+
+      <!-- LLAMADA A LA ACCIÓN -->
+      <section
+    id="presenta-tu-invento"
+    class="container-fluid py-5 text-end"
+    data-aos="flip-left"
+    data-aos-duration="800"
+    data-aos-once="true">
+        <h2>¿Tienes una idea brillantemente absurda?</h2>
+
+        <p>
+          Todo gran invento comienza cuando alguien pregunta: «¿Qué podría salir
+          mal?». Nos encantaría descubrirlo.
+        </p>
+
+        <a href="pages/taller.html">Presenta tu invento</a>
+      </section>
+
+      <!-- PIE DE PÁGINA -->
+
+  <footer class="container-fluid bg-dark text-light py-5 ">
+      <div class="container">
+
+          <!-- Parte superior -->
+          <div class="row g-4">
+
+              <!-- Marca y descripción -->
+              <div class="col-12 col-md-6">
+                  <h2 class="h4 fw-bold">ODDJOB INVENTIONS</h2>
+
+                  <p class="text-light opacity-75">
+                      Complicando innecesariamente lo imposible desde 1937½.
+                  </p>
+              </div>
+
+              <!-- Navegación -->
+              <div class="col-12 col-md-6">
+                  <h3 class="h6 fw-bold">EXPLORA NUESTRO UNIVERSO</h3>
+
+                  <nav aria-label="Navegación del pie de página"
+                      class="d-flex flex-wrap">
+
+
+                    <a href="index.html" class="px-3 link-light">Inicio</a>
+                    <a href="pages/catalogo.html" class="px-3 link-light">Catálogo</a>
+                    <a href="pages/taller.html" class="px-3 link-light">Taller</a>
+                    <a href="pages/nosotros.html" class="px-3 link-light">Nosotros</a>
+
+
+
+                  </nav>
+              </div>
+
+          </div>
+
+          <!-- Separador -->
+          <hr class="border-light opacity-25 my-4">
+
+          <!-- Parte inferior -->
+          <div class="row g-3 align-items-center">
+
+              <div class="col-12 col-md-8">
+                  <p class="small opacity-75 mb-0">
+                      © 2026 Oddjob Inventions. Todos los inventos están sujetos
+                      a pruebas cuestionables.
+                  </p>
+              </div>
+
+              <div class="col-12 col-md-4 text-md-end">
+                  <p class="small opacity-75 mb-0">
+                      Diseñado por Adair.
+                  </p>
+              </div>
+
+          </div>
+
+      </div>
+  </footer>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+    AOS.init();
+</script>
+    </body>
+  </html>
