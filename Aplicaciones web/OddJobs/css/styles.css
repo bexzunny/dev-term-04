@@ -71,9 +71,7 @@ button:focus-visible {
 }
 
 
-/* ==========================
-   2. BARRA DE NAVEGACIÓN
-   ========================== */
+/* BARRA DE NAVEGACIÓN */
 
 .navbar {
     background-color: var(--color-tinta);
@@ -96,14 +94,11 @@ button:focus-visible {
 }
 
 .navbar-nav .nav-link {
-    color: var(--color-crema);
     font-weight: bold;
-    padding: 10px 14px;
     border-radius: 8px;
 }
 
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link.active {
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
     color: var(--color-tinta);
     background-color: var(--color-amarillo);
     transform: rotate(-2deg);
@@ -118,9 +113,7 @@ button:focus-visible {
 }
 
 
-/* ==========================
-   3. PRESENTACIÓN PRINCIPAL
-   ========================== */
+/*  PRESENTACIÓN PRINCIPAL*/
 
 #presentacion-principal {
     background-color: var(--color-verde);
@@ -189,9 +182,7 @@ header img:hover {
 }
 
 
-/* ==========================
-   4. ESTILOS DE LAS SECCIONES
-   ========================== */
+/* ESTILOS DE LAS SECCIONES */
 
 section {
     padding-top: 45px;
@@ -209,9 +200,7 @@ section h3 {
 }
 
 
-/* ==========================
-   5. INVENTOS DESTACADOS
-   ========================== */
+/* INVENTOS DESTACADOS */
 
 #inventos-destacados {
     background-color: var(--color-crema);
@@ -223,17 +212,17 @@ section h3 {
     color: var(--color-tinta);
     border: 3px solid var(--color-borde);
     border-radius: 10px;
-    overflow: hidden;
+    
     box-shadow: 5px 5px 0 var(--color-borde);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-#inventos-destacados .card:hover {
+#inventos .card:hover {
     transform: translateY(-6px) rotate(-1deg);
     box-shadow: 8px 10px 0 var(--color-borde);
 }
 
-#inventos-destacados .card-img-top {
+#inventos .card-img-top {
     width: 100%;
     height: 190px;
     object-fit: cover;
@@ -241,26 +230,26 @@ section h3 {
     transition: transform 0.3s ease;
 }
 
-#inventos-destacados .card:hover .card-img-top {
+#inventos .card:hover .card-img-top {
     transform: scale(1.04);
 }
 
-#inventos-destacados .card-body {
+#inventos .card-body {
     padding: 18px;
 }
 
-#inventos-destacados .card-title {
+#inventos .card-title {
     color: var(--color-tinta);
     font-size: 1.1rem;
     font-weight: 900;
 }
 
-#inventos-destacados .card .fw-bold {
+#inventos .card .fw-bold {
     color: var(--color-rojo);
     font-size: 1.1rem;
 }
 
-#inventos-destacados .btn-primary {
+#inventos .btn-primary {
     background-color: var(--color-verde);
     border: 2px solid var(--color-borde);
     border-radius: 8px;
@@ -269,7 +258,7 @@ section h3 {
     box-shadow: 3px 3px 0 var(--color-borde);
 }
 
-#inventos-destacados .btn-primary:hover {
+#inventos .btn-primary:hover {
     background-color: var(--color-rojo);
     border-color: var(--color-borde);
     color: white;
@@ -277,15 +266,13 @@ section h3 {
     box-shadow: 1px 1px 0 var(--color-borde);
 }
 
-#inventos-destacados .btn-primary:active {
+#inventos .btn-primary:active {
     transform: translate(3px, 3px);
     box-shadow: none;
 }
 
 
-/* ==========================
-   6. ¿POR QUÉ ODDJOB?
-   ========================== */
+/* POR QUÉ ODDJOB */
 
 #por-que-oddjob {
     background-color: #E8D5AE;
@@ -329,9 +316,7 @@ section h3 {
 }
 
 
-/* ==========================
-   7. TESTIMONIOS
-   ========================== */
+/*  TESTIMONIOS */
 
 #testimonios {
     background-color: var(--color-tinta);
@@ -386,9 +371,7 @@ section h3 {
 }
 
 
-/* ==========================
-   8. INVITACIÓN A PARTICIPAR
-   ========================== */
+/*  INVITACIÓN A PARTICIPAR */
 
 #presenta-tu-invento {
     background-color: var(--color-rojo);
@@ -428,9 +411,7 @@ section h3 {
 }
 
 
-/* ==========================
-   9. PIE DE PÁGINA
-   ========================== */
+/* PIE DE PÁGINA */
 
 footer {
     background-color: var(--color-tinta);
@@ -469,9 +450,7 @@ footer p {
 }
 
 
-/* ==========================
-   10. ADAPTACIÓN A CELULARES
-   ========================== */
+/* ADAPTACIÓN A CELULARES */
 
 @media (max-width: 767px) {
     header {
@@ -492,7 +471,7 @@ footer p {
         font-size: 1.8rem;
     }
 
-    #inventos-destacados .card-img-top {
+    #inventos .card-img-top {
         height: 180px;
     }
 
@@ -537,21 +516,496 @@ transform: translateY(0) rotate(-2deg);
 }
 
 
-/* Entrada suave del contenido */
 
-#inventos-destacados,
+#inventos,
 #por-que-oddjob,
 #testimonios,
 #presenta-tu-invento {
 animation: aparecer 0.7s ease-out both;
 }
 
-/* Movimiento sutil de la ilustración principal */
+/* Movimiento de la ilustración principal */
 
 .hero img {
 animation: flotar 4s ease-in-out infinite;
 }
 
-/* Rebote de las tarjetas al pasar el cursor */
 
 
+/* Sección catálogo */
+
+
+#inventos .card {
+    height: 100%;
+    background-color: var(--color-crema-claro);
+    color: var(--color-tinta);
+    border: 3px solid var(--color-borde);
+    border-radius: 10px;
+    box-shadow: 5px 5px 0 var(--color-borde);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#inventos .card:hover {
+    transform: translateY(-6px) rotate(-1deg);
+    box-shadow: 8px 10px 0 var(--color-borde);
+}
+
+
+.inventos-imagen-contenedor {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-bottom: none;
+}
+
+
+.inventos-imagen-contenedor img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+    transition: transform 0.3s ease;
+}
+
+#inventos .card:hover .inventos-imagen-contenedor img {
+    transform: scale(1.06);
+}
+
+
+#inventos .card-body {
+    padding: 18px;
+}
+
+#inventos .card-title {
+    color: var(--color-tinta);
+    font-size: 1.3rem;
+}
+
+#inventos .card .fw-bold {
+    color: var(--color-rojo);
+    font-size: 1.1rem;
+}
+
+
+#inventos .btn-primary {
+    background-color: var(--color-verde);
+    border: 2px solid var(--color-borde);
+    border-radius: 8px;
+    color: var(--color-crema-claro);
+    font-weight: bold;
+    box-shadow: 3px 3px 0 var(--color-borde);
+}
+
+#inventos .btn-primary:hover {
+    background-color: var(--color-rojo);
+    border-color: var(--color-borde);
+    color: white;
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--color-borde);
+}
+
+/* AGUJERO NEGRO */
+
+#tarjeta-agujero-negro {
+    border: 4px solid var(--color-borde);
+    box-shadow: 6px 6px 0 var(--color-borde);
+}
+
+#titulo-agujero-negro {
+    color: var(--color-verde);
+}
+
+#boton-agujero-negro:hover {
+    background-color: var(--color-amarillo);
+    color: var(--color-tinta);
+}
+
+/* ADAPTACIÓN A CELULARES */
+
+@media (max-width: 767px) {
+    .inventos-imagen-contenedor {
+        height: 180px;
+    }
+}
+
+
+
+
+
+/*   TALLER: S*/
+
+#contenido-taller {
+    color: var(--color-tinta);
+}
+
+#contenido-taller h1,
+#contenido-taller h2,
+#contenido-taller h3 {
+    font-family: 'Bangers', cursive;
+}
+
+#contenido-taller p {
+    line-height: 1.7;
+}
+
+#contenido-taller .taller-etiqueta {
+    color: var(--color-rojo);
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+
+/* TALLER */
+
+#taller-encabezado {
+    background-color: var(--color-crema);
+    border-bottom: 5px solid var(--color-borde);
+    padding-top: 70px ;
+    padding-bottom: 70px ;
+}
+
+#titulo-taller {
+    color: var(--color-verde);
+    font-size: clamp(4rem, 9vw, 7rem);
+    line-height: 0.9;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 0 var(--color-amarillo);
+}
+
+#subtitulo-taller {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 20px;
+}
+
+#descripcion-taller {
+    max-width: 500px;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+#boton-crear-invento {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--color-rojo);
+    color: var(--color-crema-claro);
+    border: 3px solid var(--color-borde);
+    border-radius: 6px;
+    box-shadow: 4px 4px 0 var(--color-borde);
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#boton-crear-invento:hover {
+    background-color: var(--color-amarillo);
+    color: var(--color-tinta);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--color-borde);
+}
+
+
+/* CATEGORÍAS  */
+
+#taller-ideas {
+    padding: 25px;
+    background-color: var(--color-crema-claro);
+    border: 3px solid var(--color-borde);
+    border-radius: 12px;
+    box-shadow: 6px 6px 0 var(--color-borde);
+}
+
+#texto-ideas {
+    font-size: 1.05rem;
+    margin-bottom: 25px;
+}
+
+.taller-idea {
+    height: 100%;
+    min-height: 155px;
+    padding: 16px 12px;
+    background-color: var(--color-crema);
+    border: 3px solid var(--color-borde);
+    border-radius: 8px;
+    box-shadow: 3px 3px 0 var(--color-borde);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.taller-idea:hover {
+    transform: translateY(-5px) rotate(-1deg);
+    background-color: var(--color-amarillo);
+}
+
+.taller-idea span {
+    color: var(--color-rojo);
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.taller-idea h3 {
+    margin-top: 10px;
+    margin-bottom: 8px;
+    font-size: 1.6rem;
+}
+
+.taller-idea p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    line-height: 1.4 ;
+}
+
+
+/* PROCESO DE CREACIÓN */
+
+#taller-proceso {
+    background-color: var(--color-verde);
+    color: var(--color-crema-claro);
+    border-bottom: 5px solid var(--color-borde);
+    padding-top: 65px ;
+    padding-bottom: 70px ;
+}
+
+#taller-proceso .taller-etiqueta {
+    color: var(--color-amarillo);
+}
+
+#titulo-proceso {
+    color: var(--color-amarillo);
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    margin-bottom: 15px;
+    text-shadow: 3px 3px 0 var(--color-tinta);
+}
+
+#descripcion-proceso {
+    max-width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.taller-paso {
+    height: 100%;
+    padding: 28px;
+    background-color: var(--color-crema-claro);
+    color: var(--color-tinta);
+    border: 3px solid var(--color-borde);
+    border-radius: 10px;
+    box-shadow: 5px 5px 0 var(--color-borde);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.taller-paso:hover {
+    transform: translateY(-5px);
+    box-shadow: 8px 9px 0 var(--color-borde);
+}
+
+.paso-numero {
+    display: block;
+    color: var(--color-rojo);
+    font-family: 'Bangers', cursive;
+    font-size: 3.8rem;
+    line-height: 1;
+    margin-bottom: 18px;
+}
+
+.taller-paso h3 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.taller-paso p {
+    margin-bottom: 0;
+}
+
+
+/* FORMULARIO DEL TALLER*/
+
+#taller-registro {
+    background-color: var(--color-crema);
+    padding-top: 70px ;
+    padding-bottom: 70px ;
+}
+
+#titulo-registro {
+    color: var(--color-verde);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 0 var(--color-amarillo);
+}
+
+#descripcion-registro {
+    font-size: 1.05rem;
+}
+
+#nota-registro {
+    margin-top: 25px;
+    padding: 18px;
+    background-color: var(--color-amarillo);
+    border: 3px solid var(--color-borde);
+    border-radius: 8px;
+    box-shadow: 4px 4px 0 var(--color-borde);
+}
+
+#registro-formulario {
+    padding: 28px;
+    background-color: var(--color-crema-claro);
+    border: 3px solid var(--color-borde);
+    border-radius: 12px;
+    box-shadow: 6px 6px 0 var(--color-borde);
+}
+
+
+/* CAMPOS DEL FORMULARIO */
+
+#formulario-taller input,
+#formulario-taller select,
+#formulario-taller textarea {
+    padding: 12px;
+    background-color: #fffdf6;
+    color: var(--color-tinta);
+    border: 2px solid var(--color-borde);
+    border-radius: 6px;
+}
+
+#formulario-taller input:focus,
+#formulario-taller select:focus,
+#formulario-taller textarea:focus {
+    border-color: var(--color-verde-claro);
+    box-shadow: 0 0 0 3px rgb(70 124 112 / 20%);
+}
+
+/* ETIQUETAS */
+
+#formulario-taller label{
+    color: var(--color-tinta);
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* GRUPO DE OPCIONES */
+
+#grupo-estado-invento {
+    padding: 16px;
+    border: 2px dashed var(--color-borde);
+    border-radius: 8px;
+}
+
+#grupo-estado-invento .form-check {
+    margin-bottom: 8px;
+}
+
+#grupo-estado-invento input[type="radio"] {
+    padding: 0;
+    border: 2px solid var(--color-borde);
+}
+
+#grupo-estado-invento input[type="radio"]:checked {
+    background-color: var(--color-verde);
+    border-color: var(--color-verde);
+}
+
+#grupo-estado-invento input[type="radio"]:focus {
+    box-shadow: 0 0 0 3px rgb(70 124 112 / 20%);
+}
+
+/* Botón de envío */
+
+#boton-enviar-invento {
+    padding: 13px;
+    background-color: var(--color-rojo);
+    color: var(--color-crema-claro);
+    border: 3px solid var(--color-borde);
+    border-radius: 6px;
+    box-shadow: 4px 4px 0 var(--color-borde);
+    font-family: 'Bangers', cursive;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#boton-enviar-invento:hover {
+    background-color: var(--color-amarillo);
+    color: var(--color-tinta);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--color-borde);
+}
+
+#boton-enviar-invento:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+}
+
+
+/* PIE DE PÁGINA */
+
+#pie-pagina {
+    background-color: var(--color-tinta);
+    color: var(--color-crema-claro);
+    border-top: 5px solid var(--color-borde);
+}
+
+#texto-pie-pagina {
+    margin-bottom: 10px;
+}
+
+#enlace-inicio {
+    color: var(--color-amarillo);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#enlace-inicio:hover {
+    color: var(--color-crema-claro);
+    text-decoration: underline;
+}
+
+
+/*
+   DISEÑO RESPONSIVE */
+
+@media (max-width: 991px) {
+    #taller-presentacion {
+        text-align: center;
+    }
+
+    #descripcion-taller {
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    #taller-encabezado,
+    #taller-registro {
+        padding-top: 45px ;
+        padding-bottom: 45px ;
+    }
+
+    #taller-proceso {
+        padding-top: 45px ;
+        padding-bottom: 50px ;
+    }
+
+    #taller-ideas {
+        padding: 16px;
+    }
+
+    .taller-idea {
+        min-height: 135px;
+        padding: 14px 10px;
+    }
+
+    .taller-idea h3 {
+        font-size: 1.4rem;
+    }
+
+    #registro-formulario {
+        padding: 18px;
+    }
+
+    .taller-paso {
+        padding: 22px;
+    }
+}

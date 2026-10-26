@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Catálogo | ODDJOB INVENTIONS</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <link href="../css/styles.css" rel="stylesheet" />
+  </head>
+
+  <body id="pagina-catalogo">
+    <!-- NAVEGACIÓN -->
+    <nav
+      id="navegacion-principal"
+      class="navbar navbar-expand-sm bg-body-tertiary"
+    >
+      <div class="container-fluid">
+        <a id="enlace-marca" class="navbar-brand" href="../index.html">
+          ODDJOB
+        </a>
+
+        <button
+          id="boton-menu"
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#menu-navegacion"
+          aria-controls="menu-navegacion"
+          aria-expanded="false"
+          aria-label="Abrir navegación"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="menu-navegacion" class="collapse navbar-collapse me-5">
+          <div class="navbar-nav ms-auto">
+            <a id="enlace-inicio" class="nav-link" href="../index.html">
+              Inicio
+            </a>
+
+            <a
+              id="enlace-catalogo"
+              class="nav-link active"
+              aria-current="page"
+              href="catalogo.html"
+            >
+              Catálogo
+            </a>
+
+            <a id="enlace-taller" class="nav-link" href="taller.html">
+              Taller
+            </a>
+
+            <a id="enlace-nosotros" class="nav-link" href="nosotros.html">
+              Nosotros
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ENCABEZADO -->
+    <header id="catalogo-encabezado" class="container-fluid py-5">
+      <div id="catalogo-presentacion" class="container text-center">
+        <p id="catalogo-etiqueta">
+          EL ARCHIVO DE LO EXTRAORDINARIAMENTE INNECESARIO
+        </p>
+
+        <h1 id="catalogo-titulo">Catálogo de inventos</h1>
+
+        <p id="catalogo-descripcion">
+          Cada problema merece una solución. Que la solución tenga sentido es un
+          asunto completamente diferente.
+        </p>
+      </div>
+    </header>
+
+    <!-- CATÁLOGO -->
+    <main id="contenido-catalogo">
+      <section id="inventos" class="container py-5">
+        <div id="catalogo-introduccion" class="row mb-4">
+          <div class="col-12">
+            <h2 id="catalogo-subtitulo">Todos nuestros inventos</h2>
+
+            <p id="catalogo-texto">
+              Diseñados con precisión, construidos con entusiasmo y probados
+              bajo circunstancias que preferimos no explicar.
+            </p>
+          </div>
+        </div>
+
+        <div id="catalogo-lista" class="row g-4">
+          <!-- INVENTO 1 -->
+          <div id="columna-procrastinador" class="col-12 col-md-6">
+            <article id="tarjeta-procrastinador" class="card h-100">
+              <div
+                id="contenedor-imagen-procrastinador"
+                class="inventos-imagen-contenedor"
+              >
+                <img
+                  id="imagen-procrastinador"
+                  src="..."
+                  class="card-img-top"
+                  alt="El Procrastinador 3000"
+                />
+              </div>
+
+              <div
+                id="contenido-procrastinador"
+                class="card-body d-flex flex-column"
+              >
+                <h3 id="titulo-procrastinador" class="card-title">
+                  El Procrastinador 3000
+                </h3>
+
+                <p id="descripcion-procrastinador" class="card-text">
+                  Un dispositivo revolucionario que pospone tus tareas hasta que
+                  mágicamente se convierten en problema de alguien más.
+                </p>
+
+                <div id="detalles-procrastinador" class="mt-auto">
+                  <p id="precio-procrastinador" class="fw-bold">
+                    Precio: $149.50
+                  </p>
+
+                  <a
+                    id="boton-procrastinador"
+                    href="#"
+                    class="btn btn-primary"
+                    
+                  >
+                    Examinar invento
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- INVENTO 2 -->
+          <div id="columna-trapeador" class="col-12 col-md-6">
+            <article id="tarjeta-trapeador" class="card h-100">
+              <div id="trapador-automatico" class="inventos-imagen-contenedor">
+                <img
+                  id="imagen-procrastinador"
+                  src="..."
+                  class="card-img-top"
+                  alt="El Procrastinador 3000"
+                />
+              </div>
+
+              <div
+                id="contenido-trapeador"
+                class="card-body d-flex flex-column"
+              >
+                <h3 id="titulo-trapeador" class="card-title">
+                  Trapeador Automático Supremo
+                </h3>
+
+                <p id="descripcion-trapeador" class="card-text">
+                  Un trapeador autónomo que limpia el suelo, las paredes y,
+                  ocasionalmente, el techo del vecino.
+                </p>
+
+                <div id="detalles-trapeador" class="mt-auto">
+                  <p id="precio-trapeador" class="fw-bold">Precio: $149.50</p>
+
+                  <a
+                    id="boton-trapeador"
+                    href="#"
+                    class="btn btn-primary"
+
+                  >
+                    Examinar invento
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- INVENTO 3 -->
+          <div id="columna-modulador" class="col-12 col-md-6">
+            <article id="tarjeta-modulador" class="card h-100">
+              <div id="modulador-animo" class="inventos-imagen-contenedor">
+                <img
+                  id="imagen-procrastinador"
+                  src="..."
+                  class="card-img-top"
+                  alt="El Procrastinador 3000"
+                />
+              </div>
+
+              <div
+                id="contenido-modulador"
+                class="card-body d-flex flex-column"
+              >
+                <h3 id="titulo-modulador" class="card-title">
+                  El Modulador de Ánimo
+                </h3>
+
+                <p id="descripcion-modulador" class="card-text">
+                  Detecta tu estado de ánimo y adapta la habitación. Sus efectos
+                  secundarios incluyen iluminación dramática y música de jazz.
+                </p>
+
+                <div id="detalles-modulador" class="mt-auto">
+                  <p id="precio-modulador" class="fw-bold">Precio: $219.00</p>
+
+                  <a
+                    id="boton-modulador"
+                    href="#"
+                    class="btn btn-primary"
+                  >
+                    Examinar invento
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- INVENTO 4 -->
+          <div id="columna-agujero-negro" class="col-12 col-md-6">
+            <article id="tarjeta-agujero-negro" class="card h-100">
+              <div id="agujero-negror" class="inventos-imagen-contenedor">
+                <img
+                  id="imagen-procrastinador"
+                  src="..."
+                  class="card-img-top"
+                  alt="El Procrastinador 3000"
+                />
+              </div>
+
+              <div
+                id="contenido-agujero-negro"
+                class="card-body d-flex flex-column"
+              >
+                <h3 id="titulo-agujero-negro" class="card-title">
+                  Agujero Negro Portátil
+                </h3>
+
+                <p id="descripcion-agujero-negro" class="card-text">
+                  La solución definitiva para almacenar cosas. Guarda tu
+                  desorden aquí. Encontrarlo de nuevo es opcional.
+                </p>
+
+                <div id="detalles-agujero-negro" class="mt-auto">
+                  <p id="precio-agujero-negro" class="fw-bold">
+                    Precio: $499.99
+                  </p>
+
+                  <a
+                    id="boton-agujero-negro"
+                    href="agujero-negro.html"
+                    class="btn btn-primary"
+                  >
+                    Examinar invento
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer id="pie-pagina" class="container-fluid bg-dark text-light py-5">
+      <div id="pie-contenido" class="container">
+        <div id="pie-superior" class="row g-4">
+          <div id="pie-marca" class="col-12 col-md-6">
+            <h2 id="pie-titulo" class="h4 fw-bold">ODDJOB INVENTIONS</h2>
+
+            <p id="pie-descripcion" class="text-light opacity-75">
+              Complicando innecesariamente lo imposible desde 1937½.
+            </p>
+          </div>
+
+          <div id="pie-navegacion" class="col-12 col-md-6">
+            <h3 id="pie-subtitulo" class="h6 fw-bold">
+              EXPLORA NUESTRO UNIVERSO
+            </h3>
+
+            <nav
+              id="pie-enlaces"
+              aria-label="Navegación del pie de página"
+              class="d-flex flex-wrap"
+            >
+              <a
+                id="pie-enlace-inicio"
+                href="../index.html"
+                class="px-3 link-light"
+              >
+                Inicio
+              </a>
+
+              <a
+                id="pie-enlace-catalogo"
+                href="catalogo.html"
+                class="px-3 link-light"
+              >
+                Catálogo
+              </a>
+
+              <a
+                id="pie-enlace-taller"
+                href="taller.html"
+                class="px-3 link-light"
+              >
+                Taller
+              </a>
+
+              <a
+                id="pie-enlace-nosotros"
+                href="nosotros.html"
+                class="px-3 link-light"
+              >
+                Nosotros
+              </a>
+            </nav>
+          </div>
+        </div>
+
+        <hr id="pie-separador" class="border-light opacity-25 my-4" />
+
+        <div id="pie-inferior" class="row g-3 align-items-center">
+          <div id="pie-copyright" class="col-12 col-md-8">
+            <p class="small opacity-75 mb-0">
+              © 2026 Oddjob Inventions. Todos los inventos están sujetos a
+              pruebas cuestionables.
+            </p>
+          </div>
+
+          <div id="pie-autor" class="col-12 col-md-4 text-md-end">
+            <p class="small opacity-75 mb-0">Diseñado por Adair.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
