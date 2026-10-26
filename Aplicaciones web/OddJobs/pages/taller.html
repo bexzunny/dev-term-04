@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Taller | ODDJOB INVENTIONS</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Estilos del proyecto -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav id="navegacion-principal" class="navbar navbar-expand-lg">
+        <div class="container">
+
+            <a id="logo-principal" class="navbar-brand" href="../index.html">
+                ODDJOB INVENTIONS
+            </a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu-navegacion"
+                aria-controls="menu-navegacion"
+                aria-expanded="false"
+                aria-label="Mostrar navegación">
+
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="menu-navegacion" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Inicio</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="catalogo.html">Catálogo</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="taller.html">Taller</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="nosotros.html">Nosotros</a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main id="contenido-taller">
+
+        <!-- 1. PRESENTACIÓN DEL TALLER -->
+        <section id="taller-encabezado" class="container-fluid py-5">
+
+            <div class="container">
+                <div class="row align-items-center g-5">
+
+                    <!-- Título y descripción -->
+                    <div id="taller-presentacion" class="col-12 col-lg-5">
+
+                        <p class="taller-etiqueta">
+                            BIENVENIDO AL LABORATORIO
+                        </p>
+
+                        <h1 id="titulo-taller">
+                            TALLER
+                        </h1>
+
+                        <h2 id="subtitulo-taller">
+                            ¿Qué puedes inventar?
+                        </h2>
+
+                        <p id="descripcion-taller">
+                            Las mejores ideas comienzan con un problema
+                            extraño y una solución todavía más extraña.
+                            Cuéntanos qué tienes en mente y hagamos algo
+                            extraordinario.
+                        </p>
+
+                        <a
+                            href="#formulario-taller"
+                            id="boton-crear-invento"
+                            class="btn btn-primary">
+                            ¡Quiero inventar!
+                        </a>
+
+                    </div>
+
+
+                    <!-- Categorías de ideas -->
+                    <div id="taller-ideas" class="col-12 col-lg-7">
+
+                        <p id="texto-ideas">
+                            ¿No sabes por dónde empezar? Piensa en algo
+                            cotidiano que podría funcionar de una manera
+                            completamente diferente.
+                        </p>
+
+                        <div id="ideas-categorias"
+                             class="row row-cols-2 row-cols-md-3 g-3">
+
+                            <div class="col">
+                                <article id="idea-hogar" class="taller-idea">
+                                    <span>01</span>
+                                    <h3>Hogar</h3>
+                                    <p>Soluciones para la vida diaria.</p>
+                                </article>
+                            </div>
+
+                            <div class="col">
+                                <article id="idea-comida" class="taller-idea">
+                                    <span>02</span>
+                                    <h3>Comida</h3>
+                                    <p>Inventos para comer diferente.</p>
+                                </article>
+                            </div>
+
+                            <div class="col">
+                                <article id="idea-escuela" class="taller-idea">
+                                    <span>03</span>
+                                    <h3>Escuela</h3>
+                                    <p>Menos tareas, más ingenio.</p>
+                                </article>
+                            </div>
+
+                            <div class="col">
+                                <article id="idea-tecnologia" class="taller-idea">
+                                    <span>04</span>
+                                    <h3>Tecnología</h3>
+                                    <p>Ideas fuera de lo común.</p>
+                                </article>
+                            </div>
+
+                            <div class="col">
+                                <article id="idea-aventura" class="taller-idea">
+                                    <span>05</span>
+                                    <h3>Aventura</h3>
+                                    <p>Soluciones para explorar.</p>
+                                </article>
+                            </div>
+
+                            <div class="col">
+                                <article id="idea-absurdo" class="taller-idea">
+                                    <span>06</span>
+                                    <h3>Lo absurdo</h3>
+                                    <p>Porque lo raro también sirve.</p>
+                                </article>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- 2. PROCESO DE CREACIÓN -->
+        <section id="taller-proceso" class="container-fluid py-5">
+
+            <div class="container">
+
+                <div id="proceso-encabezado" class="text-center mb-5">
+
+                    <p class="taller-etiqueta">
+                        DEL PAPEL A LA REALIDAD
+                    </p>
+
+                    <h2 id="titulo-proceso">
+                        TU IDEA
+                    </h2>
+
+                    <p id="descripcion-proceso">
+                        Crear un invento es más sencillo cuando sabes
+                        por dónde empezar.
+                    </p>
+
+                </div>
+
+
+                <div id="proceso-pasos" class="row g-4">
+
+                    <div class="col-12 col-md-4">
+                        <article id="paso-uno" class="taller-paso">
+
+                            <span class="paso-numero">1.</span>
+
+                            <h3>Imagina</h3>
+
+                            <p>
+                                Identifica algo que te gustaría mejorar
+                                o un problema que quieras resolver.
+                            </p>
+
+                        </article>
+                    </div>
+
+
+                    <div class="col-12 col-md-4">
+                        <article id="paso-dos" class="taller-paso">
+
+                            <span class="paso-numero">2.</span>
+
+                            <h3>Descríbelo</h3>
+
+                            <p>
+                                Explica cómo funcionaría tu invento,
+                                qué haría y a quién podría ayudar.
+                            </p>
+
+                        </article>
+                    </div>
+
+
+                    <div class="col-12 col-md-4">
+                        <article id="paso-tres" class="taller-paso">
+
+                            <span class="paso-numero">3.</span>
+
+                            <h3>Compártelo</h3>
+
+                            <p>
+                                Envía tu propuesta para que podamos
+                                conocer tu idea y explorar sus posibilidades.
+                            </p>
+
+                        </article>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 3. FORMULARIO PARA PROPONER UN INVENTO -->
+        <section id="taller-registro" class="container-fluid py-5">
+
+            <div class="container">
+                <div class="row g-5">
+
+                    <!-- Presentación del formulario -->
+                    <div id="registro-presentacion" class="col-12 col-lg-5">
+
+                        <p class="taller-etiqueta">
+                            TU TURNO DE CREAR
+                        </p>
+
+                        <h2 id="titulo-registro">
+                            Cuéntanos tu invento
+                        </h2>
+
+                        <p id="descripcion-registro">
+                            No necesitas tener un prototipo ni conocer
+                            todas las respuestas. Basta con explicar tu
+                            idea de la mejor manera posible.
+                        </p>
+
+                        <p id="nota-registro">
+                            <strong>Regla del taller:</strong>
+                            ninguna idea es demasiado extraña para empezar.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Campos del formulario -->
+                    <div id="registro-formulario" class="col-12 col-lg-7">
+
+                        <form id="formulario-taller">
+
+                            <!-- Nombre -->
+                            <div class="mb-3">
+
+                                <label for="nombre-inventor" class="form-label">
+                                    Nombre del inventor
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nombre-inventor"
+                                    name="nombre"
+                                    class="form-control"
+                                    placeholder="¿Cómo te llamas?"
+                                    required>
+
+                            </div>
+
+
+                            <!-- Correo -->
+                            <div class="mb-3">
+
+                                <label for="correo-inventor" class="form-label">
+                                    Correo electrónico
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="correo-inventor"
+                                    name="correo"
+                                    class="form-control"
+                                    placeholder="inventor@ejemplo.com"
+                                    required>
+
+                            </div>
+
+
+                            <!-- Nombre del invento -->
+                            <div class="mb-3">
+
+                                <label for="nombre-invento" class="form-label">
+                                    Nombre de tu invento
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nombre-invento"
+                                    name="invento"
+                                    class="form-control"
+                                    placeholder="El nombre de tu gran creación"
+                                    required>
+
+                            </div>
+
+
+                            <!-- Categoría -->
+                            <div class="mb-3">
+
+                                <label for="categoria-invento" class="form-label">
+                                    Categoría
+                                </label>
+
+                                <select
+                                    id="categoria-invento"
+                                    name="categoria"
+                                    class="form-select"
+                                    required>
+
+                                    <option value="" selected disabled>
+                                        Selecciona una categoría
+                                    </option>
+
+                                    <option value="hogar">Hogar</option>
+                                    <option value="comida">Comida</option>
+                                    <option value="escuela">Escuela</option>
+                                    <option value="tecnologia">Tecnología</option>
+                                    <option value="aventura">Aventura</option>
+                                    <option value="absurdo">Lo absurdo</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- Estado de la idea -->
+                            <div id="grupo-estado-invento" class="mb-3">
+
+                                <p class="form-label">
+                                    ¿En qué etapa está tu idea?
+                                </p>
+
+                                <div class="form-check">
+
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="estado"
+                                        id="estado-idea"
+                                        value="idea"
+                                        required>
+
+                                    <label class="form-check-label" for="estado-idea">
+                                        Solo es una idea
+                                    </label>
+
+                                </div>
+
+                                <div class="form-check">
+
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="estado"
+                                        id="estado-boceto"
+                                        value="boceto">
+
+                                    <label class="form-check-label" for="estado-boceto">
+                                        Tengo un boceto
+                                    </label>
+
+                                </div>
+
+                                <div class="form-check">
+
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="estado"
+                                        id="estado-prototipo"
+                                        value="prototipo">
+
+                                    <label class="form-check-label" for="estado-prototipo">
+                                        Ya tengo un prototipo
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Descripción -->
+                            <div class="mb-3">
+
+                                <label for="descripcion-invento" class="form-label">
+                                    Describe tu invento
+                                </label>
+
+                                <textarea
+                                    id="descripcion-invento"
+                                    name="descripcion"
+                                    class="form-control"
+                                    rows="5"
+                                    placeholder="¿Qué hace? ¿Cómo funciona? ¿Qué problema resuelve?"
+                                    required></textarea>
+
+                            </div>
+
+
+                            <!-- Archivo opcional -->
+                            <div class="mb-4">
+
+                                <label for="archivo-boceto" class="form-label">
+                                    Dibujo o boceto (opcional)
+                                </label>
+
+                                <input
+                                    type="file"
+                                    id="archivo-boceto"
+                                    name="boceto"
+                                    class="form-control"
+                                    accept="image/*,.pdf">
+
+                            </div>
+
+
+                            <!-- Envío -->
+                            <button
+                                type="submit"
+                                id="boton-enviar-invento"
+                                class="btn btn-primary w-100">
+
+                                Enviar mi invento
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- PIE DE PÁGINA -->
+    <footer id="pie-pagina" class="container-fluid py-4">
+
+        <div class="container text-center">
+
+            <p id="texto-pie-pagina">
+                ODDJOB INVENTIONS | Ideas extrañas, inventos extraordinarios.
+            </p>
+
+            <a id="enlace-inicio" href="../index.html">
+                Volver al inicio
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
+</body>
+
+</html>
