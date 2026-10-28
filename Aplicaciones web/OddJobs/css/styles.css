@@ -910,6 +910,19 @@ animation: flotar 4s ease-in-out infinite;
     box-shadow: 0 0 0 3px rgb(70 124 112 / 20%);
 }
 
+#formulario-taller input[type="checkbox"] {
+
+    margin: 0 8px 0 0;
+    
+
+    background-color: #fffdf6;
+    border: 3px solid var(--color-borde);
+    border-radius: 4px;
+}
+#formulario-taller input[type="checkbox"]:checked {
+    background-color: var(--color-verde);
+    border-color: var(--color-borde);
+}
 /* Botón de envío */
 
 #boton-enviar-invento {
@@ -1007,5 +1020,181 @@ animation: flotar 4s ease-in-out infinite;
 
     .taller-paso {
         padding: 22px;
+    }
+}
+
+
+/* PÁGINA DEL AGUJERO NEGRO */
+
+#producto-principal {
+    background-color: var(--color-crema);
+    border-bottom: 5px solid var(--color-borde);
+}
+
+#tarjeta-agujero-negro {
+    background-color: var(--color-crema-claro);
+    border-radius: 10px;
+}
+
+#imagen-agujero-principal {
+    width: 100%;
+    height: 420px;
+    object-fit: contain;
+    background-color: var(--color-tinta);
+    border: 3px solid var(--color-borde);
+    border-radius: 8px;
+}
+
+.boton-miniatura {
+    height: 85px;
+    overflow: hidden;
+    background-color: var(--color-crema);
+    border: 2px solid var(--color-borde);
+    border-radius: 6px;
+}
+
+.boton-miniatura img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.boton-miniatura:hover,
+.boton-miniatura.activa {
+    background-color: var(--color-amarillo);
+    border-color: var(--color-rojo);
+    transform: translateY(-3px);
+}
+
+#titulo-agujero-negro {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: 0.95;
+    text-shadow: 3px 3px 0 var(--color-amarillo);
+}
+
+#subtitulo-agujero-negro {
+    color: var(--color-verde);
+}
+
+#precio-agujero-negro {
+    color: var(--color-rojo);
+}
+
+#boton-agujero-negro {
+    background-color: var(--color-verde);
+    border: 2px solid var(--color-borde);
+    color: var(--color-crema-claro);
+    font-weight: bold;
+    box-shadow: 4px 4px 0 var(--color-borde);
+}
+
+#boton-agujero-negro:hover {
+    background-color: var(--color-amarillo);
+    color: var(--color-tinta);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--color-borde);
+}
+
+#franja-promocional {
+    background-color: var(--color-rojo);
+    color: var(--color-crema-claro);
+    border-bottom: 4px solid var(--color-borde);
+}
+
+#franja-promocional h2 {
+    color: var(--color-crema-claro);
+}
+
+#detalles-producto,
+#testimonios-producto {
+    background-color: #E8D5AE;
+}
+
+#detalles-producto .card,
+#testimonios-producto .card {
+    background-color: var(--color-crema-claro);
+    border: 3px solid var(--color-borde);
+    border-radius: 10px;
+    box-shadow: 5px 5px 0 var(--color-borde);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#detalles-producto .card:hover,
+#testimonios-producto .card:hover {
+    transform: translateY(-5px) rotate(-1deg);
+    box-shadow: 8px 8px 0 var(--color-borde);
+}
+
+#historia-invento {
+    background-color: var(--color-verde);
+    color: var(--color-crema-claro);
+}
+
+#historia-invento h2 {
+    color: var(--color-amarillo);
+}
+
+#imagen-universo {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border: 4px solid var(--color-borde);
+    box-shadow: 6px 6px 0 var(--color-amarillo);
+}
+
+#testimonios-producto .card h3 {
+    color: var(--color-verde);
+}
+
+#preguntas-frecuentes .accordion-item {
+    background-color: var(--color-crema-claro);
+    border: 2px solid var(--color-borde);
+}
+
+#preguntas-frecuentes .accordion-button {
+    background-color: var(--color-crema-claro);
+    color: var(--color-tinta);
+    font-weight: bold;
+}
+
+
+
+#compra-producto {
+    background-color: var(--color-rojo);
+    color: var(--color-crema-claro);
+    border-top: 4px solid var(--color-borde);
+}
+
+#compra-producto h2 {
+    color: var(--color-crema-claro);
+    text-shadow: 2px 2px 0 var(--color-tinta);
+}
+
+#compra-producto .btn-primary {
+    background-color: var(--color-amarillo);
+    color: var(--color-tinta);
+    border: 3px solid var(--color-borde);
+    box-shadow: 4px 4px 0 var(--color-borde);
+    font-weight: bold;
+}
+
+#compra-producto .btn-primary:hover {
+    background-color: var(--color-crema-claro);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--color-borde);
+}
+
+@media (max-width: 767px) {
+    #imagen-agujero-principal {
+        height: 300px;
+    }
+
+    .boton-miniatura {
+        height: 65px;
+    }
+
+    #titulo-agujero-negro {
+        font-size: 3.5rem;
     }
 }
