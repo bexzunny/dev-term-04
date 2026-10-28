@@ -23,6 +23,7 @@ validate
     },
     {
       rule: 'email',
+      errorMessage: 'Debe ingresar un correo dimensional válido',
     },
   ])
         .addField('#nombre-invento', [
