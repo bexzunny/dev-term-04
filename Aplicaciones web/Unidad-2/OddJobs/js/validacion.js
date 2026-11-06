@@ -42,16 +42,12 @@ validate
             errorMessage: 'El nombre no puede superar los 40 caracteres.'
         }
     ])
-
-    
     .addField(document.querySelector('#categoria-invento'), [
         {
             rule: 'required',
             errorMessage: 'Debes seleccionar una categoría.'
         }
     ])
-
-
     .addField(document.querySelector('#descripcion-invento'), [
         {
             rule: 'required',
@@ -68,9 +64,6 @@ validate
             errorMessage: 'La descripción no puede superar los 500 caracteres.'
         }
     ])
-    
-
-
   .addRequiredGroup('#grupo-estado-invento', 'Debes seleccionar la etapa de tu idea.', {
     tooltip: {
       position: 'bottom',
