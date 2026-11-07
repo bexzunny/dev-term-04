@@ -1,0 +1,459 @@
+/* PALETA Y CONFIGURACIÓN GENERAL */
+
+:root {
+  --ink: #182a35;
+  --teal: #367c78;
+  --mustard: #e9b44c;
+  --coral: #d96c4f;
+  --cream: #f5ebd5;
+  --paper: #ead9b5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background-color: var(--cream);
+  font-family: "DM Sans", sans-serif;
+
+  /* Textura opcional. Si no existe, se mantiene el color base. */
+  background-image: url("../assets/images/textura-papel.webp");
+  background-repeat: repeat;
+  background-size: 300px;
+  background-blend-mode: multiply;
+}
+
+h1, h2, h3, .brand {
+  font-family: "Rye", serif;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  line-height: 1.12;
+}
+
+h1 span {
+  display: block;
+  color: var(--coral);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+/* NAVEGACIÓN */
+
+.site-header {
+  position: relative;
+  z-index: 10;
+  background: var(--cream);
+  border-bottom: 3px solid var(--ink);
+}
+
+.navbar {
+  padding-block: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  color: var(--coral);
+  font-size: 1.6rem;
+  line-height: 1;
+  text-shadow: 2px 2px 0 var(--ink);
+}
+
+.brand small {
+  color: var(--teal);
+  font: 700 0.7rem "DM Sans", sans-serif;
+  letter-spacing: 0.18rem;
+  text-shadow: none;
+}
+
+.brand-icon {
+  position: absolute;
+  left: -1.2rem;
+  top: 0;
+  color: var(--mustard);
+}
+
+.nav-link {
+  margin-inline: 0.25rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--coral);
+}
+
+
+/* PORTADA */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 5rem 0 6rem;
+  background: var(--teal);
+  border-bottom: 4px solid var(--ink);
+}
+
+/* Esta imagen solo pinta el escenario detrás del contenido. */
+.hero-sky {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgb(24 42 53 / 35%),
+      rgb(54 124 120 / 8%)
+    ),
+    url("../assets/images/ciudad-futurista.webp");
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero-content {
+  position: relative;
+}
+
+.eyebrow,
+.section-kicker {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  color: var(--cream);
+  text-shadow: 4px 4px 0 var(--ink);
+}
+
+.hero h1 span {
+  color: var(--mustard);
+}
+
+.hero-description {
+  max-width: 440px;
+  margin: 1.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.comic-button {
+  display: inline-flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 1.4rem;
+
+  color: var(--cream);
+  background: var(--coral);
+  border: 3px solid var(--ink);
+  border-radius: 12px 5px 10px 6px;
+  box-shadow: 5px 5px 0 var(--ink);
+
+  font-weight: 700;
+  text-transform: uppercase;
+
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.comic-button:hover {
+  color: var(--cream);
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.hero-art {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 350px;
+}
+
+.inventor-image {
+  width: min(100%, 390px);
+  height: 390px;
+  object-fit: contain;
+  filter: drop-shadow(5px 5px 0 var(--ink));
+}
+
+.speech-bubble {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  max-width: 180px;
+  padding: 1rem;
+
+  background: var(--cream);
+  border: 3px solid var(--ink);
+  border-radius: 48% 52% 45% 55% / 55% 45% 55% 45%;
+
+  font-weight: 700;
+  text-align: center;
+  transform: rotate(-5deg);
+}
+
+.spark {
+  position: absolute;
+  color: var(--mustard);
+  font-size: 3rem;
+}
+
+.spark-one {
+  top: 20%;
+  right: 8%;
+}
+
+.spark-two {
+  bottom: 10%;
+  left: 5%;
+}
+
+.hero-stamp {
+  position: absolute;
+  right: 3%;
+  bottom: 1rem;
+  padding: 0.5rem 1rem;
+
+  color: var(--ink);
+  border: 2px dashed var(--ink);
+  font-weight: 700;
+  transform: rotate(-6deg);
+}
+
+
+/* SECCIONES */
+
+.section-space {
+  padding-block: 5rem;
+}
+
+.section-heading {
+  margin-bottom: 2rem;
+}
+
+.section-heading h2 {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: var(--mustard);
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  transform: rotate(-1deg);
+}
+
+
+/* TARJETAS DE PRODUCTOS */
+
+.product-card {
+  height: 100%;
+  overflow: hidden;
+
+  background: var(--cream);
+  border: 2px solid var(--ink);
+  border-radius: 12px 5px 15px 7px;
+  box-shadow: 5px 5px 0 var(--ink);
+
+  transition: transform 180ms ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px) rotate(-0.5deg);
+}
+
+.product-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 240px;
+  padding: 1rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.product-art img {
+  width: 100%;
+  height: 210px;
+  object-fit: contain;
+  filter: drop-shadow(3px 3px 0 rgb(24 42 53 / 20%));
+}
+
+.teal {
+  background: var(--teal);
+}
+
+.orange {
+  background: var(--coral);
+}
+
+.yellow {
+  background: var(--mustard);
+}
+
+.product-number {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  padding: 0.3rem 0.5rem;
+
+  background: var(--cream);
+  border: 2px solid var(--ink);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  min-height: 205px;
+}
+
+.product-info h3 {
+  font-size: 1.2rem;
+}
+
+.product-info p {
+  line-height: 1.5;
+}
+
+.product-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.detail-link {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+
+/* PRESENTACIÓN */
+
+.about-strip {
+  padding-block: 4rem;
+  background: var(--mustard);
+  border-block: 3px solid var(--ink);
+}
+
+.feature-list {
+  padding: 0;
+  list-style: none;
+}
+
+.feature-list li {
+  margin-block: 1rem;
+  font-weight: 700;
+}
+
+.about-strip small {
+  font-size: 0.75rem;
+}
+
+
+/* PIE DE PÁGINA */
+
+.site-footer {
+  padding-block: 2rem;
+  color: var(--cream);
+  background: var(--ink);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-brand {
+  color: var(--mustard);
+}
+
+.footer-inner p {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+
+/* ACCESIBILIDAD Y MÓVILES */
+
+:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 4px;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding-block: 3rem 4rem;
+  }
+
+  .hero-art {
+    min-height: 270px;
+  }
+
+  .inventor-image {
+    height: 290px;
+  }
+
+  .speech-bubble {
+    left: 2%;
+    max-width: 145px;
+    font-size: 0.85rem;
+  }
+
+  .hero-stamp {
+    font-size: 0.7rem;
+  }
+
+  .section-space {
+    padding-block: 3rem;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
