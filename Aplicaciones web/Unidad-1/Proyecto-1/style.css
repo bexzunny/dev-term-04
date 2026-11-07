@@ -1,0 +1,78 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Betania+Patmos&display=swap');
+body{
+    background-color: #F2EFE7;
+    margin: 0px;
+}
+h1{
+    color: #0afd73; 
+    font-size: 9rem;
+    background-color: #000000;
+      font-family: "Betania Patmos", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h2,h3,h4,h5,h6{
+    color: #ff425f;
+    background-color: #676766;
+    font-size: 7rem;
+    text-align: center;
+
+}
+
+div{
+    margin-bottom: 0rem;
+}
+/*
+h3{
+    font-size: 6rem;
+    text-shadow: #000000;
+    background-color: #676766;
+}
+h4{
+    font-size: 5rem;
+    color: #7000f8;
+    text-transform: uppercase;
+    
+}
+h5{
+    font-size: 4rem;
+    text-align: end;
+    color: #f89d00;
+    text-decoration: overline;
+    
+}
+h6{
+    color: #f80000;
+    animation-name: mover;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    text-overflow: ellipsis;
+    font-size: 3rem;
+    text-indent: 2em;
+    text-transform: unset;
+    
+}
+*/
+p{
+    font-size: 2rem;
+}
+
+
+.fondoverde{
+    background-color: #0afd73;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 4rem;
+}
+.fondonaranja{
+    background-color: #f86300;
+}
+
+
