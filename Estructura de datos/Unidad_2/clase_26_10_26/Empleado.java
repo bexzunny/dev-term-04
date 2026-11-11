@@ -1,22 +1,22 @@
 package Unidad_2.clase_26_10_26;
 
 public class Empleado {
-    int idempleado;
+    int idEmpleado;
     String nombre;
     String departamento;
-    double sueldoneto;
+    double sueldoNeto;
     int antiguedad;
 
-    public Empleado(int antiguedad, String departamento, int idempleado, String nombre, double sueldoneto) {
+    public Empleado(int antiguedad, String departamento, int idEmpleado, String nombre, double sueldoNeto) {
         this.antiguedad = antiguedad;
         this.departamento = departamento;
-        this.idempleado = idempleado;
+        this.idEmpleado = idEmpleado;
         this.nombre = nombre;
-        this.sueldoneto = sueldoneto;
+        this.sueldoNeto = sueldoNeto;
     }
 
-    public int getIdempleado() {
-        return idempleado;
+    public int getIdEmpleado() {
+        return idEmpleado;
     }
 
     public String getNombre() {
@@ -27,8 +27,8 @@ public class Empleado {
         return departamento;
     }
 
-    public double getSueldoneto() {
-        return sueldoneto;
+    public double getSueldoNeto() {
+        return sueldoNeto;
     }
 
     public int getAntiguedad() {
