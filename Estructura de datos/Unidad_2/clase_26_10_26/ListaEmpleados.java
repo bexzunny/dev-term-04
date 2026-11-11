@@ -69,7 +69,7 @@ public class ListaEmpleados {
     public void insertarPorValor(int valor, Empleado trabajador) {
         actual = primero;
         Nodo nuevo = new Nodo(trabajador);
-        while (actual != null && actual.dato.idempleado != valor) {
+        while (actual != null && actual.dato.idEmpleado != valor) {
             actual = actual.siguiente;
         }
         if (actual == null) {
@@ -131,7 +131,7 @@ public class ListaEmpleados {
         } else {
             actual = primero;
             while (actual.siguiente != null) {
-                if (actual.dato.idempleado == id) {
+                if (actual.dato.idEmpleado == id) {
                     System.out.println("El valor de " + id + "fue encontrado en la posición " + posicion);
                 }
                 posicion++;
@@ -146,13 +146,13 @@ public class ListaEmpleados {
             System.out.println("La lista está vacía");
             return;
         }
-        if (primero.dato.idempleado == valor) {
+        if (primero.dato.idEmpleado == valor) {
             primero = primero.siguiente;
             System.out.println("Nodo eliminado correctamente");
             return;
         }
         actual = primero;
-        while (actual.siguiente != null && actual.siguiente.dato.idempleado != valor) {
+        while (actual.siguiente != null && actual.siguiente.dato.idEmpleado != valor) {
             actual = actual.siguiente;
         }
         if (actual.siguiente == null) {
@@ -170,10 +170,10 @@ public class ListaEmpleados {
         } else {
             actual = primero;
             while (actual.siguiente != null) {
-                suma += actual.siguiente.dato.sueldoneto;
+                suma += actual.siguiente.dato.getSueldoNeto();
                 actual = actual.siguiente;
             }
-            suma += actual.dato.sueldoneto;
+            suma += actual.dato.getSueldoNeto();
         }
         return suma;
     }
@@ -199,7 +199,7 @@ public class ListaEmpleados {
     public void modificar(int idActual) {
         actual = primero;
         int op;
-        while (actual.siguiente != null && actual.dato.idempleado != idActual) {
+        while (actual.siguiente != null && actual.dato.idEmpleado != idActual) {
             actual = actual.siguiente;
         }
         if (actual == null) {
@@ -224,7 +224,7 @@ public class ListaEmpleados {
         if (op == 3) {
             double sueldo;
             sueldo = Double.parseDouble(JOptionPane.showInputDialog("Teclea el nuevo sueldo"));
-            actual.dato.sueldoneto = sueldo;
+            actual.dato.sueldoNeto = sueldo;
         }
         if (op == 4) {
             int antig;
@@ -242,7 +242,7 @@ public class ListaEmpleados {
         }
         actual = primero.siguiente;
         while (actual != null) {
-            if (actual.dato.sueldoneto > primero.dato.sueldoneto) {
+            if (actual.dato.getSueldoNeto() > primero.dato.getSueldoNeto()) {
                 primero = actual;
             }
             actual = actual.siguiente;
@@ -263,5 +263,4 @@ public class ListaEmpleados {
             System.out.println("");
         }
     }
-
 }
