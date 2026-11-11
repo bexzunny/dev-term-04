@@ -48,27 +48,51 @@ public class TransporteCarga {
     }
 
     public void setCodigo(String codigo) {
-        this.codigo = codigo;
+        if(codigo != null && !codigo.trim().isEmpty()){
+            this.codigo = codigo;
+        }else{
+            System.out.println("Error: El código no puede estar vacío.");
+        }
     }
 
     public void setMarca(String marca) {
-        this.marca = marca;
+        if(marca != null && !marca.trim().isEmpty()){
+            this.marca = marca;
+        }else{
+            System.out.println("Error: La marca no puede estar vacía.");
+        }
     }
 
     public void setModelo(String modelo) {
-        this.modelo = modelo;
+        if(modelo != null && !modelo.trim().isEmpty()){
+            this.modelo = modelo;
+        }else{
+            System.out.println("Error: El modelo no puede estar vacío.");
+        }
     }
 
     public void setTipo(String tipo) {
-        this.tipo = tipo;
+        if(tipo != null && !tipo.trim().isEmpty()){
+            this.tipo = tipo;
+        }else{
+            System.out.println("Error: El tipo no puede estar vacío.");
+        }
     }
 
     public void setCapacidadToneladas(double capacidadToneladas) {
-        this.capacidadToneladas = capacidadToneladas;
+        if(capacidadToneladas > 0){
+            this.capacidadToneladas = capacidadToneladas;
+        }else{
+            System.out.println("Error: La capacidad debe ser mayor a cero.");
+        }
     }
 
     public void setPlacas(String placas) {
-        this.placas = placas;
+        if(placas != null && !placas.trim().isEmpty()){
+            this.placas = placas;
+        }else{
+            System.out.println("Error: Las placas no pueden estar vacías.");
+        }
     }
 
     public void setDisponible(boolean disponible) {
