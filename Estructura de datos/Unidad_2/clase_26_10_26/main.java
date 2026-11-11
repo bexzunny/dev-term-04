@@ -25,7 +25,7 @@ public class main {
                     sueldon = Double.parseDouble("Teclea el sueldo del empleado");
                     ant = Integer.parseInt(JOptionPane.showInputDialog("Teclea la antiguedad"));
                     Empleado emple = new Empleado(ant, depa, idemp, nom, sueldon);
-                    //listita.insertarInicio(emple);
+                    listita.insertarAlFrente(emple);
                     break;
                 case 2:
                     idemp = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el id de empleado"));
@@ -34,7 +34,7 @@ public class main {
                     sueldon = Double.parseDouble("Teclea el sueldo del empleado");
                     ant = Integer.parseInt(JOptionPane.showInputDialog("Teclea la antiguedad"));
                     Empleado emplea = new Empleado(ant, depa, idemp, nom, sueldon);
-                    //listita.insertarFinal(emplea);
+                    listita.insertarAlFinal(emplea);
                     break;
                 case 3:
                     posicion = Integer.parseInt(JOptionPane.showInputDialog("Teclea la posición donde se insertará el nuevo nodo"));
@@ -59,10 +59,10 @@ public class main {
                     listita.insertarPorValor(datob, empleads);
                     break;
                 case 5: 
-                   // listita.eliminarFrente();
+                    listita.eliminarAlFrente();
                     break;
                 case 6:
-                    //listita.eliminarFinal();
+                    listita.eliminarAlFinal();
                     break;
                 case 7:
                     posicion= Integer.parseInt(JOptionPane.showInputDialog("Teclea la posición del empleado a buscar"));
@@ -74,12 +74,11 @@ public class main {
                     break;
                 case 9:
                     datob = Integer.parseInt(JOptionPane.showInputDialog("Teclea el id del empleado a buscar"));
-                    //listita..buscar();
+                    listita.buscar(datob);
                     break;
                 case 10:
                     datob = Integer.parseInt(JOptionPane.showInputDialog("Teclea el id del empleado a modificar"));
-                    dato = Integer.parseInt(JOptionPane.showInputDialog("Teclea el nuevo valor del nodo"));
-                    //listita..modificarPorValor();
+                    listita.modificar(datob);
                     break;
                 case 11:
                     listita.mostrar();
