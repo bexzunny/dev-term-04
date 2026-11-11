@@ -26,21 +26,44 @@ public class ListaTransportes {
 
     public void mostrarTransportes(){
         actual = primero;
-        if (actual == null) {
-            System.out.println("La lista está vacía");
+        if(primero == null){
+            System.out.println("La lista esta vacia");
+            return;
         }
         while (actual.siguiente != null) {
-
-
+                System.out.println("\n----------------------------------------------");
+                System.out.println("Código:          " + actual.transporte.getCodigo());
+                System.out.println("Marca:           " + actual.transporte.getMarca());
+                System.out.println("Modelo:          " + actual.transporte.getModelo());
+                System.out.println("Tipo:            " + actual.transporte.getTipo());
+                System.out.println("Capacidad:       " + actual.transporte.getCapacidadToneladas() + " toneladas");
+                System.out.println("Placas:          " + actual.transporte.getPlacas());
+                System.out.println("Disponibilidad:  " + (actual.transporte.isDisponible() ? "Disponible" : "No disponible"));
+                System.out.println("----------------------------------------------");
             actual = actual.siguiente;
         }
     }
 
     public void buscarPorCodigo(String cod){
         actual = primero;
+        if(primero == null){
+            System.out.println("La lista esta vacia");
+            return;
+        }
         while (actual != null) {
             if (actual.transporte.getCodigo().equalsIgnoreCase(cod)) {
-                //mostrar
+        System.out.println("\n╔══════════════════════════════════════════════════╗");
+        System.out.println(  "               Buscar por codigo                     ");
+        System.out.println(  "╚══════════════════════════════════════════════════╝");
+                System.out.println("\n----------------------------------------------");
+                System.out.println("Código:          " + actual.transporte.getCodigo());
+                System.out.println("Marca:           " + actual.transporte.getMarca());
+                System.out.println("Modelo:          " + actual.transporte.getModelo());
+                System.out.println("Tipo:            " + actual.transporte.getTipo());
+                System.out.println("Capacidad:       " + actual.transporte.getCapacidadToneladas() + " toneladas");
+                System.out.println("Placas:          " + actual.transporte.getPlacas());
+                System.out.println("Disponibilidad:  " + (actual.transporte.isDisponible() ? "Disponible" : "No disponible"));
+                System.out.println("----------------------------------------------");
             }
             actual = actual.siguiente;
         }
@@ -48,6 +71,10 @@ public class ListaTransportes {
 
     public void modificarTransporte(String cod){
         actual = primero;
+        if(primero == null){
+            System.out.println("La lista esta vacia");
+            return;
+        }
         while (actual != null) {
             if (actual.transporte.codigo.equalsIgnoreCase(cod)) {
                 String res = "0";
@@ -100,12 +127,24 @@ public class ListaTransportes {
 
     public void mostrarDisponibles(){
         actual = primero;
-        if (actual == null) {
-            System.out.println("La lista está vacía");
+        if(primero == null){
+            System.out.println("La lista esta vacia");
+            return;
         }
         while (actual.siguiente != null) {
             if (actual.transporte.isDisponible()) {
-                //mostrar
+        System.out.println("\n╔══════════════════════════════════════════════════╗");
+        System.out.println(  "              Transportes disponibles                 ");
+        System.out.println(  "╚══════════════════════════════════════════════════╝");
+                System.out.println("\n----------------------------------------------");
+                System.out.println("Código:          " + actual.transporte.getCodigo());
+                System.out.println("Marca:           " + actual.transporte.getMarca());
+                System.out.println("Modelo:          " + actual.transporte.getModelo());
+                System.out.println("Tipo:            " + actual.transporte.getTipo());
+                System.out.println("Capacidad:       " + actual.transporte.getCapacidadToneladas() + " toneladas");
+                System.out.println("Placas:          " + actual.transporte.getPlacas());
+                System.out.println("Disponibilidad:  " + (actual.transporte.isDisponible() ? "Disponible" : "No disponible"));
+                System.out.println("----------------------------------------------");
             }
 
             actual = actual.siguiente;
@@ -115,8 +154,10 @@ public class ListaTransportes {
         double mayor= primero.transporte.getCapacidadToneladas();
         String codigo  = "";
         actual = primero;
-        if (actual == null) {
+
+        if(primero == null){
             System.out.println("La lista esta vacia");
+            return;
         }
         while (actual != null) {
             if (actual.transporte.getCapacidadToneladas()> mayor) {
@@ -129,6 +170,141 @@ public class ListaTransportes {
     }
 
     public int contarTransportes(){
-        return 0;
+        int trans =0;
+        actual= primero;
+        if(primero == null){
+            System.out.println("La lista esta vacia");
+            return 0;
+        }
+        while (actual!= null) {
+            trans++;
+            actual = actual.siguiente;
+        }
+        return trans;
+    }
+
+    public void insertarAfterCodigo(String codigo, TransporteCarga trans){
+        Nodo nuevo = new Nodo(trans);
+        actual = primero;
+        if(primero == null){
+            System.out.println("La lista esta vacia");
+            return;
+        }
+        while (actual != null) {
+            if (actual.transporte.getCodigo().equals(codigo)) {
+                nuevo.siguiente = actual.siguiente;
+                actual.siguiente = nuevo;
+                System.out.println("Se ha registrado correectamente el vehiculo despupes del codigo: "+ codigo);
+                return;
+            }
+            actual = actual.siguiente;
+        }
+        if(actual == null){
+            System.out.println("La lista esta vacia");
+        }
+        System.out.println("No se ha encontrado el codigo\nTransporte no insertado en la lista");
+        
+    }
+
+    public void insertarBeforeCodigo(String codigo, TransporteCarga trans){
+        Nodo nuevo = new Nodo(trans);
+        actual = primero;
+        if(primero == null){
+            System.out.println("La lista esta vacia");
+            return;
+        }
+        if(actual.siguiente.transporte.getCodigo().equals(codigo)){
+            registrarTransporte(trans);
+        }
+        while (actual.siguiente != null) {
+            if (actual.siguiente.transporte.getCodigo().equals(codigo)) {
+                nuevo.siguiente = actual.siguiente;
+                actual.siguiente = nuevo;
+                System.out.println("Se ha registrado correectamente el vehiculo despupes del codigo: "+ codigo);
+                return;
+            }
+            actual = actual.siguiente;
+        }
+
+
+
+    }
+
+    public void ordenarPorCapacidad(){
+        actual = primero;
+        if(primero == null){
+            System.out.println("La lista esta vacia");
+            return;
+        }
+        boolean bandera = true;
+        while (bandera) {
+            if(primero.transporte.getCapacidadToneladas()> primero.siguiente.transporte.getCapacidadToneladas()){
+                Nodo cambio = primero;
+                primero = primero.siguiente;
+                cambio.siguiente = primero.siguiente;
+                primero.siguiente = cambio;
+            }
+            actual = primero.siguiente;
+            Nodo anterior = primero;
+            while (actual.siguiente != null) {
+                if(actual.transporte.getCapacidadToneladas()> actual.siguiente.transporte.getCapacidadToneladas()){
+                    Nodo cambio = actual;
+                    anterior.siguiente = actual.siguiente;
+                    actual.siguiente = actual.siguiente.siguiente;
+                    anterior.siguiente.siguiente = cambio;
+                    anterior = anterior.siguiente;
+
+                }else{
+                anterior = actual;
+                actual = actual.siguiente;
+                }
+
+            }
+            bandera = comprobacion();
+        } 
+        System.out.println("\n╔══════════════════════════════════════════════════╗");
+        System.out.println(  "                  Lista ordenada                     ");
+        System.out.println(  "╚══════════════════════════════════════════════════╝");
+        mostrarTransportes();
+    }
+
+    public void transportesPesados(){
+        actual = primero;
+
+        if(primero == null){
+            System.out.println("La lista esta vacia");
+            return;
+        }
+
+        System.out.println("\n╔══════════════════════════════════════════════════╗");
+        System.out.println("              TRANSPORTES PESADOS                  ");
+        System.out.println("╚══════════════════════════════════════════════════╝");
+
+        while (actual != null) {
+            if(actual.transporte.getCapacidadToneladas() > 20){
+                System.out.println("\n----------------------------------------------");
+                System.out.println("Código:          " + actual.transporte.getCodigo());
+                System.out.println("Marca:           " + actual.transporte.getMarca());
+                System.out.println("Modelo:          " + actual.transporte.getModelo());
+                System.out.println("Tipo:            " + actual.transporte.getTipo());
+                System.out.println("Capacidad:       " + actual.transporte.getCapacidadToneladas() + " toneladas");
+                System.out.println("Placas:          " + actual.transporte.getPlacas());
+                System.out.println("Disponibilidad:  " + (actual.transporte.isDisponible() ? "Disponible" : "No disponible"));
+                System.out.println("----------------------------------------------");
+            }
+
+            actual = actual.siguiente;
+        }
+    }
+
+
+    public boolean comprobacion(){
+        actual = primero;
+        while (actual!= null) {
+            if(actual.transporte.getCapacidadToneladas()> actual.siguiente.transporte.getCapacidadToneladas()){
+                return false;
+            }
+        }
+        return true;
     }
 }
