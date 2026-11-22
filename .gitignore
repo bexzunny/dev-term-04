@@ -1,0 +1,15 @@
+# Configuración local de editores e IDEs
+.vs/
+.vscode/
+
+# Dependencias y artefactos generados
+node_modules/
+**/build/
+**/.gradle/
+**/.idea/
+**/.kotlin/
+local.properties
+
+# Archivos del sistema y comprimidos de entrega
+.DS_Store
+*.zip
