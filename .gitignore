@@ -10,6 +10,9 @@ node_modules/
 **/.kotlin/
 local.properties
 
+# Material de materias fuera del seguimiento de este repositorio
+Calculo Varias Variables/
+
 # Archivos del sistema y comprimidos de entrega
 .DS_Store
 *.zip
