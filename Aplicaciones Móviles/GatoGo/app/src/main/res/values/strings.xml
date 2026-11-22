@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">GatoGO</string>
+
+    <string name="descripcion_mascotas">Mascotas</string>
+    <string name="descripcion_logo">Logo de GatoGO</string>
+    <string name="titulo_inicio">Tu barrio tiene\nmuchos michis</string>
+    <string name="descripcion_inicio">Descubre los gatos de tu zona y guarda cada encuentro con cariño</string>
+    <string name="boton_entrar">Entrar</string>
+    <string name="explorar_sin_sesion">Explora el mapa, sin iniciar sesión</string>
+    <string name="nav_inicio">Inicio</string>
+    <string name="nav_mapa">Mapa</string>
+    <string name="nav_registrar">Registrar</string>
+    <string name="nav_coleccion">Colección</string>
+    <string name="nav_perfil">Perfil</string>
+    <string name="registrar_gato">Registrar gato</string>
+    <string name="guardar_encuentro">Guarda un encuentro</string>
+    <string name="mi_coleccion">Mi colección</string>
+    <string name="tus_registros">Tus registros personales</string>
+    <string name="aviso_respeto_titulo">Observa con respeto, comparte con cuidado.</string>
+    <string name="aviso_privacidad">Ubicaciones aproximadas, nunca direcciones.</string>
+
+
+    <!--Segunda pantalla-->
+    <string name="titulo_mapa">Mapa de michis</string>
+    <string name="descripcion_filtros">Filtros</string>
+    <string name="buscar_zona_gato">Buscar gato por nombre, color o descripción</string>
+    <string name="descripcion_buscar">Buscar</string>
+    <string name="filtro_todos">Todos</string>
+    <string name="filtro_naranja">Naranja</string>
+    <string name="filtro_sin_collar">Sin collar</string>
+    <string name="mas_filtros">Más filtros</string>
+    <string name="calle_paseo_tilos">Paseo de los Tilos</string>
+    <string name="parque_olivo">Parque del Olivo</string>
+    <string name="descripcion_gato">Gato</string>
+    <string name="mi_ubicacion">Mi ubicación</string>
+    <string name="etiqueta_mapa">Mapa ilustrativo · Zona del Olivo</string>
+    <string name="nombre_mango">Mango</string>
+    <string name="caracteristicas_mango">Naranja · Sin collar</string>
+    <string name="fecha_mango">Parque del Olivo · 12 oct. 2026</string>
+    <string name="ver_detalles">Ver detalles</string>
+    <string name="consultar_ficha">Consultar ficha</string>
+    <string name="nombre_luna">También por aquí: Luna</string>
+    <string name="fecha_luna">Plaza de los Tilos · 11 oct.</string>
+    <string name="boton_capturar">Capturar</string>
+    <string name="aviso_capturar">Capturar</string>
+    <string name="aviso_privacidad_mapa">Solo mostramos zonas aproximadas.</string>
+</resources>
