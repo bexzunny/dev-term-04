@@ -24,12 +24,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.ui.res.stringResource
+import com.example.gatogo.R
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import com.example.gatogo.ui.viewmodel.UsuarioViewModel
 
 @Composable
@@ -132,7 +136,7 @@ fun AppNavegacion(
         }
 
         composable(AppScreens.REGISTRAR) {
-            RegistrarGatoScreen(navController)
+            RegistrarGatoScreen(navController, idUsuario = sesion.idUsuario)
         }
 
         composable(AppScreens.COLECCION) {
@@ -147,6 +151,18 @@ fun AppNavegacion(
                 navController = navController,
                 idUsuario = sesion.idUsuario,
                 usuarioViewModel = usuarioViewModel
+            )
+        }
+
+        composable(
+            route = AppScreens.DETALLE_GATO,
+            arguments = listOf(navArgument("idGato") { type = NavType.IntType })
+        ) { entry ->
+            val idGato = entry.arguments?.getInt("idGato") ?: 0
+            DetalleGatoScreen(
+                navController = navController,
+                idGato = idGato,
+                idUsuario = sesion.idUsuario
             )
         }
     }
@@ -168,7 +184,7 @@ private fun PantallaCarga() {
             )
 
             Text(
-                text = "Preparando GatoGO…",
+                text = stringResource(R.string.nav_loading),
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
@@ -191,11 +207,11 @@ fun BarraNavegacion(
     )
 
     val nombres = listOf(
-        "Inicio",
-        "Mapa",
-        "Registrar",
-        "Colección",
-        "Perfil"
+        stringResource(R.string.nav_home),
+        stringResource(R.string.nav_map),
+        stringResource(R.string.nav_register),
+        stringResource(R.string.nav_collection),
+        stringResource(R.string.nav_profile)
     )
 
     val iconos = listOf(

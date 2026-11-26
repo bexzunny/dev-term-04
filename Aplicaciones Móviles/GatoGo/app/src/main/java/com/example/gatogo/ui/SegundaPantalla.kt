@@ -14,17 +14,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.CameraAlt
-import androidx.compose.material.icons.outlined.MyLocation
 import androidx.compose.material.icons.outlined.Pets
 import androidx.compose.material.icons.outlined.Search
-import androidx.compose.material.icons.outlined.Shield
 import androidx.compose.material.icons.outlined.Tune
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -38,59 +35,54 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.gatogo.R
+import com.example.gatogo.data.demo.CoordenadasAleatorias
+import com.example.gatogo.domain.model.Avistamiento
 import com.example.gatogo.domain.model.Gato
 import com.example.gatogo.ui.theme.GatoGoTheme
 import com.example.gatogo.ui.viewmodel.GatoViewModel
-import kotlinx.coroutines.launch
+import com.example.gatogo.ui.viewmodel.MapaViewModel
 
 @Composable
 fun SegundaPantalla(
     navController: NavHostController? = null,
-    viewModel: GatoViewModel = hiltViewModel()
+    viewModel: GatoViewModel = hiltViewModel(),
+    mapaViewModel: MapaViewModel = hiltViewModel()
 ) {
     val gatos by viewModel.gatos.collectAsState()
+    val avistamientos by mapaViewModel.avistamientos.collectAsState()
     var filtroSeleccionado by rememberSaveable { mutableStateOf("todos") }
-    val snackbarHostState = remember { SnackbarHostState() }
-    val coroutineScope = rememberCoroutineScope()
+
     Scaffold(
         topBar = { TopBarMapa(onSeleccionarFiltro = { filtroSeleccionado = it }) },
-        bottomBar = { BarraNavegacion(navController, AppScreens.MAPA) },
-        snackbarHost = { SnackbarHost(snackbarHostState) }
-    ) { innerPadding ->
+        bottomBar = { BarraNavegacion(navController, AppScreens.MAPA) }
+    ) { padding ->
         ContenidoMapa(
-            modifier = Modifier.padding(innerPadding),
+            modifier = Modifier.padding(padding),
             gatos = gatos,
+            avistamientos = avistamientos,
             filtroSeleccionado = filtroSeleccionado,
             onFiltroSeleccionado = { filtroSeleccionado = it },
             onRegistrar = { navController?.navigate(AppScreens.REGISTRAR) },
-            onSolicitarUbicacion = {
-                coroutineScope.launch {
-                    snackbarHostState.showSnackbar(
-                        "La ubicación se habilitará al integrar el servicio de geolocalización."
-                    )
-                }
-            }
+            onDetalle = { idGato -> navController?.navigate(AppScreens.detalleGato(idGato)) }
         )
     }
 }
@@ -100,34 +92,23 @@ fun SegundaPantalla(
 fun TopBarMapa(onSeleccionarFiltro: (String) -> Unit = {}) {
     var menuAbierto by rememberSaveable { mutableStateOf(false) }
     TopAppBar(
-        title = {
-            Text(
-                text = stringResource(R.string.titulo_mapa),
-                fontWeight = FontWeight.Bold
-            )
-        },
+        title = { Text(stringResource(R.string.map_title), fontWeight = FontWeight.Bold) },
         actions = {
             Box {
                 IconButton(onClick = { menuAbierto = true }) {
-                    Icon(
-                        imageVector = Icons.Outlined.Tune,
-                        contentDescription = stringResource(R.string.descripcion_filtros)
-                    )
+                    Icon(Icons.Outlined.Tune, contentDescription = stringResource(R.string.map_filters))
                 }
-                DropdownMenu(
-                    expanded = menuAbierto,
-                    onDismissRequest = { menuAbierto = false }
-                ) {
+                DropdownMenu(expanded = menuAbierto, onDismissRequest = { menuAbierto = false }) {
                     DropdownMenuItem(
-                        text = { Text("Todos") },
+                        text = { Text(stringResource(R.string.map_filter_all)) },
                         onClick = { onSeleccionarFiltro("todos"); menuAbierto = false }
                     )
                     DropdownMenuItem(
-                        text = { Text("Naranja") },
+                        text = { Text(stringResource(R.string.map_filter_orange)) },
                         onClick = { onSeleccionarFiltro("naranja"); menuAbierto = false }
                     )
                     DropdownMenuItem(
-                        text = { Text("Sin collar") },
+                        text = { Text(stringResource(R.string.map_filter_no_collar)) },
                         onClick = { onSeleccionarFiltro("sin_collar"); menuAbierto = false }
                     )
                 }
@@ -140,326 +121,230 @@ fun TopBarMapa(onSeleccionarFiltro: (String) -> Unit = {}) {
 fun ContenidoMapa(
     modifier: Modifier = Modifier,
     gatos: List<Gato> = emptyList(),
+    avistamientos: List<Avistamiento> = emptyList(),
     filtroSeleccionado: String = "todos",
     onFiltroSeleccionado: (String) -> Unit = {},
     onRegistrar: () -> Unit = {},
-    onSolicitarUbicacion: () -> Unit = {}
+    onDetalle: (Int) -> Unit = {}
 ) {
     var busqueda by rememberSaveable { mutableStateOf("") }
-    val scrollState = rememberScrollState()
+    var avistamientoSeleccionado by rememberSaveable { mutableIntStateOf(-1) }
 
     val gatosFiltrados = gatos.filter { gato ->
-        val texto = "${gato.nombre} ${gato.colores} ${gato.descripcion}"
+        val texto = "${gato.nombre} ${gato.colores} ${gato.descripcion} ${gato.raza} ${gato.tamano}"
         val coincideBusqueda = texto.contains(busqueda.trim(), ignoreCase = true)
         val coincideFiltro = when (filtroSeleccionado) {
             "naranja" -> gato.colores.contains("naranja", ignoreCase = true)
-
             "sin_collar" -> gato.descripcion.contains("sin collar", ignoreCase = true)
             else -> true
         }
         coincideBusqueda && coincideFiltro
     }
+    val idsVisibles = gatosFiltrados.map { it.idGato }.toSet()
+    val avistamientosVisibles = avistamientos.filter {
+        it.idGato in idsVisibles && it.latitud != null && it.longitud != null
+    }
+    val seleccionado = avistamientosVisibles.firstOrNull {
+        it.idAvistamiento == avistamientoSeleccionado
+    }
+    val gatoSeleccionado = seleccionado?.let { sighting ->
+        gatos.firstOrNull { it.idGato == sighting.idGato }
+    }
 
-    Box(modifier = modifier.fillMaxSize()) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .verticalScroll(scrollState)
-                .padding(16.dp)
+    Column(
+        modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
+    ) {
+        OutlinedTextField(
+            value = busqueda,
+            onValueChange = { busqueda = it },
+            modifier = Modifier.fillMaxWidth(),
+            placeholder = { Text(stringResource(R.string.map_search)) },
+            leadingIcon = { Icon(Icons.Outlined.Search, contentDescription = stringResource(R.string.map_search_desc)) },
+            singleLine = true
+        )
+        Row(
+            modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(top = 12.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            OutlinedTextField(
-                value = busqueda,
-                onValueChange = { busqueda = it },
+            FilterChip(
+                selected = filtroSeleccionado == "todos",
+                onClick = { onFiltroSeleccionado("todos") },
+                label = { Text(stringResource(R.string.map_filter_all)) }
+            )
+            FilterChip(
+                selected = filtroSeleccionado == "naranja",
+                onClick = { onFiltroSeleccionado("naranja") },
+                label = { Text(stringResource(R.string.map_filter_orange)) }
+            )
+            FilterChip(
+                selected = filtroSeleccionado == "sin_collar",
+                onClick = { onFiltroSeleccionado("sin_collar") },
+                label = { Text(stringResource(R.string.map_filter_no_collar)) }
+            )
+        }
+
+        MapaOffline(
+            avistamientos = avistamientosVisibles,
+            gatos = gatos,
+            seleccionadoId = avistamientoSeleccionado,
+            onSeleccionar = { avistamientoSeleccionado = it },
+            modifier = Modifier.padding(top = 16.dp)
+        )
+
+        Text(
+            stringResource(R.string.map_demo_zone),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(top = 6.dp)
+        )
+
+        if (seleccionado != null && gatoSeleccionado != null) {
+            Card(
+                modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer)
+            ) {
+                Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(5.dp)) {
+                    Text(
+                        gatoSeleccionado.nombre.ifBlank { stringResource(R.string.unknown_cat_name) },
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(gatoSeleccionado.colores)
+                    Text(seleccionado.descripcion)
+                    Button(
+                        onClick = { onDetalle(gatoSeleccionado.idGato) },
+                        modifier = Modifier.fillMaxWidth()
+                    ) { Text(stringResource(R.string.map_open_detail)) }
+                }
+            }
+        }
+
+        Text(
+            stringResource(R.string.map_registered),
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(top = 18.dp, bottom = 8.dp)
+        )
+        if (gatosFiltrados.isEmpty()) {
+            Card(
                 modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text(stringResource(R.string.buscar_zona_gato)) },
-                leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Outlined.Search,
-                        contentDescription = stringResource(R.string.descripcion_buscar)
-                    )
-                },
-                singleLine = true
-            )
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .horizontalScroll(rememberScrollState())
-                    .padding(top = 12.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
             ) {
-                FilterChip(
-                    selected = filtroSeleccionado == "todos",
-                    onClick = { onFiltroSeleccionado("todos") },
-                    label = { Text(stringResource(R.string.filtro_todos)) }
-                )
-                FilterChip(
-                    selected = filtroSeleccionado == "naranja",
-                    onClick = { onFiltroSeleccionado("naranja") },
-                    label = { Text(stringResource(R.string.filtro_naranja)) }
-                )
-                FilterChip(
-                    selected = filtroSeleccionado == "sin_collar",
-                    onClick = { onFiltroSeleccionado("sin_collar") },
-                    label = { Text(stringResource(R.string.filtro_sin_collar)) }
+                Text(
+                    stringResource(if (gatos.isEmpty()) R.string.map_empty else R.string.map_no_matches),
+                    modifier = Modifier.padding(18.dp)
                 )
             }
-
-            MapaIlustrativo(
-                modifier = Modifier.padding(top = 16.dp),
-                onMiUbicacion = onSolicitarUbicacion
-            )
-
-            Text(
-                text = "Gatos registrados",
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(top = 18.dp, bottom = 8.dp)
-            )
-
-            if (gatosFiltrados.isEmpty()) {
-                Card(
-                    modifier = Modifier.fillMaxWidth(),
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceVariant
-                    )
-                ) {
-                    Column(
-                        modifier = Modifier.padding(18.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        Text(
-                            if (gatos.isEmpty()) "Todavía no hay gatos registrados."
-                            else "No hay gatos que coincidan con la búsqueda o el filtro.",
-                            fontWeight = FontWeight.SemiBold
-                        )
-                        Text(
-                            "Los gatos que registres aparecerán aquí automáticamente.",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                }
-            } else {
-                gatosFiltrados.forEach { gato ->
-                    TarjetaGato(
-                        gato = gato,
-                        modifier = Modifier.padding(bottom = 10.dp)
-                    )
-                }
+        } else {
+            gatosFiltrados.forEach { gato ->
+                TarjetaGato(
+                    gato = gato,
+                    modifier = Modifier.padding(bottom = 10.dp),
+                    onClick = { onDetalle(gato.idGato) }
+                )
             }
+        }
 
-            Button(
-                onClick = onRegistrar,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 12.dp)
+        Button(
+            onClick = onRegistrar,
+            modifier = Modifier.fillMaxWidth().padding(top = 12.dp)
+        ) {
+            Icon(Icons.Outlined.CameraAlt, contentDescription = stringResource(R.string.map_capture))
+            Text(stringResource(R.string.map_capture), modifier = Modifier.padding(start = 8.dp), fontWeight = FontWeight.Bold)
+        }
+    }
+}
+
+@Composable
+private fun MapaOffline(
+    avistamientos: List<Avistamiento>,
+    gatos: List<Gato>,
+    seleccionadoId: Int,
+    onSeleccionar: (Int) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    BoxWithConstraints(
+        modifier = modifier.fillMaxWidth().height(290.dp)
+            .clip(RoundedCornerShape(18.dp))
+            .background(MaterialTheme.colorScheme.surfaceVariant)
+    ) {
+        // Calles dibujadas localmente: no hay mosaicos, red ni SDK cartográfico.
+        Box(Modifier.fillMaxWidth().height(18.dp).align(Alignment.Center).background(MaterialTheme.colorScheme.surface))
+        Box(Modifier.fillMaxHeight().fillMaxWidth(0.10f).align(Alignment.Center).background(MaterialTheme.colorScheme.surface))
+        Box(Modifier.fillMaxWidth(0.82f).height(9.dp).align(Alignment.TopCenter).offset(y = 54.dp).background(MaterialTheme.colorScheme.surface))
+        Box(Modifier.fillMaxWidth(0.78f).height(9.dp).align(Alignment.BottomCenter).offset(y = (-62).dp).background(MaterialTheme.colorScheme.surface))
+        Box(
+            Modifier.size(72.dp).align(Alignment.TopStart).padding(12.dp)
+                .clip(CircleShape).background(MaterialTheme.colorScheme.tertiaryContainer)
+        )
+        Box(
+            Modifier.size(92.dp).align(Alignment.BottomEnd).padding(12.dp)
+                .clip(CircleShape).background(MaterialTheme.colorScheme.tertiaryContainer)
+        )
+        Text(
+            stringResource(R.string.map_offline_label),
+            modifier = Modifier.align(Alignment.TopStart).padding(start = 18.dp, top = 88.dp),
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+
+        avistamientos.forEach { sighting ->
+            val lat = sighting.latitud ?: return@forEach
+            val lon = sighting.longitud ?: return@forEach
+            val x = CoordenadasAleatorias.posicionX(lon)
+            val y = CoordenadasAleatorias.posicionY(lat)
+            val gato = gatos.firstOrNull { it.idGato == sighting.idGato }
+            IconButton(
+                onClick = { onSeleccionar(sighting.idAvistamiento) },
+                modifier = Modifier.offset(
+                    x = maxWidth * x - 20.dp,
+                    y = maxHeight * y - 20.dp
+                ).size(40.dp).background(
+                    if (sighting.idAvistamiento == seleccionadoId) MaterialTheme.colorScheme.primary
+                    else MaterialTheme.colorScheme.surface,
+                    CircleShape
+                )
             ) {
                 Icon(
-                    imageVector = Icons.Outlined.CameraAlt,
-                    contentDescription = stringResource(R.string.aviso_capturar)
-                )
-                Text(
-                    text = stringResource(R.string.boton_capturar),
-                    modifier = Modifier.padding(start = 8.dp),
-                    fontWeight = FontWeight.Bold
+                    Icons.Outlined.Pets,
+                    contentDescription = gato?.nombre ?: stringResource(R.string.unknown_cat_name),
+                    tint = if (sighting.idAvistamiento == seleccionadoId) MaterialTheme.colorScheme.onPrimary
+                    else MaterialTheme.colorScheme.primary
                 )
             }
+        }
+    }
+}
 
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 10.dp, bottom = 8.dp),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(
-                    imageVector = Icons.Outlined.Shield,
-                    contentDescription = null,
-                    modifier = Modifier.size(18.dp),
-                    tint = MaterialTheme.colorScheme.primary
-                )
-                Text(
-                    text = stringResource(R.string.aviso_privacidad_mapa),
-                    modifier = Modifier.padding(start = 6.dp),
+@Composable
+fun TarjetaGato(gato: Gato, modifier: Modifier = Modifier, onClick: () -> Unit = {}) {
+    Card(onClick = onClick, modifier = modifier.fillMaxWidth()) {
+        Row(modifier = Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+            Icon(
+                imageVector = Icons.Outlined.Pets,
+                contentDescription = gato.nombre.ifBlank { stringResource(R.string.map_cats_desc) },
+                modifier = Modifier.size(65.dp).background(
+                    MaterialTheme.colorScheme.secondaryContainer,
+                    RoundedCornerShape(10.dp)
+                ).padding(16.dp),
+                tint = MaterialTheme.colorScheme.primary
+            )
+            Column(modifier = Modifier.weight(1f).padding(start = 12.dp)) {
+                Text(gato.nombre.ifBlank { stringResource(R.string.unknown_cat_name) }, fontWeight = FontWeight.Bold)
+                if (gato.colores.isNotBlank()) Text(gato.colores, style = MaterialTheme.typography.bodySmall)
+                if (gato.raza.isNotBlank()) Text(gato.raza, style = MaterialTheme.typography.bodySmall)
+                if (gato.tamano.isNotBlank()) Text(gato.tamano, style = MaterialTheme.typography.bodySmall)
+                if (gato.descripcion.isNotBlank()) Text(
+                    gato.descripcion,
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }
-
-        if (scrollState.maxValue > 0) {
-            BoxWithConstraints(
-                modifier = Modifier
-                    .align(Alignment.CenterEnd)
-                    .fillMaxHeight()
-                    .width(4.dp)
-                    .padding(vertical = 4.dp)
-            ) {
-                val alturaBarra = maxHeight
-                val total = (scrollState.viewportSize + scrollState.maxValue).coerceAtLeast(1)
-                val proporcion = scrollState.viewportSize.toFloat() / total
-                val alturaIndicador = alturaBarra * proporcion
-                val desplazamiento = (alturaBarra - alturaIndicador) *
-                    (scrollState.value.toFloat() / scrollState.maxValue.coerceAtLeast(1))
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(alturaIndicador)
-                        .offset(y = desplazamiento)
-                        .background(
-                            color = MaterialTheme.colorScheme.primary,
-                            shape = RoundedCornerShape(50.dp)
-                        )
-                )
-            }
-        }
     }
 }
 
-
-@Composable
-fun MapaIlustrativo(
-    modifier: Modifier = Modifier,
-    onMiUbicacion: () -> Unit = {}
-) {
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(250.dp)
-            .background(MaterialTheme.colorScheme.secondaryContainer)
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(18.dp)
-                .align(Alignment.Center)
-                .background(MaterialTheme.colorScheme.surface)
-        )
-        Box(
-            modifier = Modifier
-                .fillMaxHeight()
-                .width(18.dp)
-                .align(Alignment.Center)
-                .background(MaterialTheme.colorScheme.surface)
-        )
-        Text(
-            text = stringResource(R.string.calle_paseo_tilos),
-            modifier = Modifier.align(Alignment.TopStart).padding(12.dp),
-            style = MaterialTheme.typography.bodySmall,
-            fontWeight = FontWeight.Bold
-        )
-        Text(
-            text = stringResource(R.string.parque_olivo),
-            modifier = Modifier.align(Alignment.BottomEnd).padding(12.dp),
-            style = MaterialTheme.typography.bodySmall,
-            fontWeight = FontWeight.Bold
-        )
-        MarcadorGato(
-            modifier = Modifier.align(Alignment.CenterStart).padding(start = 55.dp)
-        )
-        MarcadorGato(
-            modifier = Modifier.align(Alignment.TopEnd).padding(top = 65.dp, end = 65.dp)
-        )
-        MarcadorGato(
-            modifier = Modifier.align(Alignment.BottomStart).padding(start = 100.dp, bottom = 50.dp)
-        )
-        MarcadorGato(
-            seleccionado = true,
-            modifier = Modifier.align(Alignment.Center)
-        )
-        IconButton(
-            onClick = onMiUbicacion,
-            modifier = Modifier
-                .align(Alignment.TopEnd)
-                .padding(8.dp)
-                .background(MaterialTheme.colorScheme.surface)
-        ) {
-            Icon(
-                imageVector = Icons.Outlined.MyLocation,
-                contentDescription = stringResource(R.string.mi_ubicacion)
-            )
-        }
-        Text(
-            text = "Vista ilustrativa. Las ubicaciones reales se mostrarán al registrar avistamientos.",
-            modifier = Modifier
-                .align(Alignment.BottomStart)
-                .padding(8.dp)
-                .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(8.dp))
-                .padding(8.dp),
-            style = MaterialTheme.typography.labelSmall
-        )
-    }
-}
-
-@Composable
-fun MarcadorGato(
-    seleccionado: Boolean = false,
-    modifier: Modifier = Modifier
-) {
-    Icon(
-        imageVector = Icons.Outlined.Pets,
-        contentDescription = stringResource(R.string.descripcion_gato),
-        modifier = modifier
-            .size(40.dp)
-            .background(
-                color = if (seleccionado) MaterialTheme.colorScheme.primary
-                else MaterialTheme.colorScheme.surface,
-                shape = CircleShape
-            )
-            .padding(9.dp),
-        tint = if (seleccionado) MaterialTheme.colorScheme.onPrimary
-        else MaterialTheme.colorScheme.primary
-    )
-}
-
-@Composable
-fun TarjetaGato(gato: Gato, modifier: Modifier = Modifier) {
-    Card(modifier = modifier.fillMaxWidth()) {
-        Column(modifier = Modifier.padding(12.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    imageVector = Icons.Outlined.Pets,
-                    contentDescription = gato.nombre,
-                    modifier = Modifier
-                        .size(65.dp)
-                        .background(
-                            MaterialTheme.colorScheme.secondaryContainer,
-                            RoundedCornerShape(10.dp)
-                        )
-                        .padding(16.dp),
-                    tint = MaterialTheme.colorScheme.primary
-                )
-                Column(
-                    modifier = Modifier.weight(1f).padding(start = 12.dp)
-                ) {
-                    Text(gato.nombre, fontWeight = FontWeight.Bold)
-                    if (gato.colores.isNotBlank()) {
-                        Text(gato.colores, style = MaterialTheme.typography.bodySmall)
-                    }
-                    if (gato.descripcion.isNotBlank()) {
-                        Text(
-                            gato.descripcion,
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                    Text(
-                        "Registrado el: ${gato.fechaRegistro}",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun segundaPantallaPreview() {
-    GatoGoTheme {
-        ContenidoMapa(gatos = emptyList())
-    }
+    GatoGoTheme { ContenidoMapa(gatos = emptyList()) }
 }

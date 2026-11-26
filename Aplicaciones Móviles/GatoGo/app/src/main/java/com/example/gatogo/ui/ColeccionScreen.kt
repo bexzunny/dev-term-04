@@ -18,10 +18,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.example.gatogo.R
 import com.example.gatogo.domain.model.Gato
 import com.example.gatogo.ui.viewmodel.GatoViewModel
 import kotlinx.coroutines.flow.emptyFlow
@@ -40,20 +42,17 @@ fun ColeccionScreen(
     val gatos by gatosFlow.collectAsState(initial = emptyList())
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text("Mi colección", fontWeight = FontWeight.Bold) }) },
+        topBar = { TopAppBar(title = { Text(stringResource(R.string.collection_title), fontWeight = FontWeight.Bold) }) },
         bottomBar = { BarraNavegacion(navController, AppScreens.COLECCION) }
     ) { padding ->
         if (gatos.isEmpty()) {
             Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(padding)
-                    .padding(24.dp),
+                modifier = Modifier.fillMaxSize().padding(padding).padding(24.dp),
                 verticalArrangement = Arrangement.Center
             ) {
-                Text("Todavía no tienes gatos en tu colección.", style = MaterialTheme.typography.titleMedium)
+                Text(stringResource(R.string.collection_empty), style = MaterialTheme.typography.titleMedium)
                 Text(
-                    "La colección muestra los gatos vinculados a tus avistamientos. Registrar un gato y registrar un avistamiento son operaciones distintas.",
+                    stringResource(R.string.collection_note),
                     modifier = Modifier.padding(top = 8.dp),
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -64,7 +63,9 @@ fun ColeccionScreen(
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 items(gatos, key = { it.idGato }) { gato ->
-                    TarjetaColeccion(gato)
+                    TarjetaColeccion(gato) {
+                        navController.navigate(AppScreens.detalleGato(gato.idGato))
+                    }
                 }
             }
         }
@@ -72,11 +73,16 @@ fun ColeccionScreen(
 }
 
 @Composable
-private fun TarjetaColeccion(gato: Gato) {
-    Card(modifier = Modifier.fillMaxWidth()) {
+private fun TarjetaColeccion(gato: Gato, onClick: () -> Unit) {
+    Card(onClick = onClick, modifier = Modifier.fillMaxWidth()) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text(gato.nombre, fontWeight = FontWeight.Bold)
+            Text(
+                gato.nombre.ifBlank { stringResource(R.string.unknown_cat_name) },
+                fontWeight = FontWeight.Bold
+            )
             if (gato.colores.isNotBlank()) Text(gato.colores)
+            if (gato.raza.isNotBlank()) Text(gato.raza)
+            if (gato.tamano.isNotBlank()) Text(gato.tamano)
             if (gato.descripcion.isNotBlank()) {
                 Text(
                     gato.descripcion,
