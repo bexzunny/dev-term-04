@@ -1,6 +1,9 @@
 package com.example.gatogo.data.repository
 
 import androidx.room.withTransaction
+import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
+import com.example.gatogo.R
 import com.example.gatogo.data.database.AppDatabase
 import com.example.gatogo.data.database.dao.UsuarioDao
 import com.example.gatogo.data.database.entity.UsuarioEntity
@@ -26,7 +29,8 @@ class CorreoYaRegistradoException : Exception("Ya existe una cuenta con ese corr
 @Singleton
 class UsuarioRepositoryImp @Inject constructor(
     private val usuarioDao: UsuarioDao,
-    private val database: AppDatabase
+    private val database: AppDatabase,
+    @ApplicationContext private val context: Context
 ) : UsuarioRepository {
 
     override fun obtenerUsuarios(): Flow<List<Usuario>> =
@@ -70,7 +74,7 @@ class UsuarioRepositoryImp @Inject constructor(
             .replace('.', ' ').replace('_', ' ').replace('-', ' ')
             .split(' ').filter { it.isNotBlank() }
             .joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
-            .ifBlank { "Usuario GatoGO" }
+            .ifBlank { context.getString(R.string.default_user_name) }
 
         val nuevoUsuario = UsuarioEntity(
             nombre = nombreInicial,
@@ -123,6 +127,24 @@ class UsuarioRepositoryImp @Inject constructor(
 
     override suspend fun eliminarUsuario(usuario: Usuario) =
         usuarioDao.eliminarUsuario(usuario.toEntity())
+
+    override suspend fun actualizarNombre(idUsuario: Int, nombre: String) {
+        usuarioDao.actualizarNombre(idUsuario, nombre.trim())
+    }
+
+    override suspend fun actualizarContrasena(idUsuario: Int, nuevaContrasena: String) {
+        require(nuevaContrasena.length >= 8) { "La contraseña debe tener al menos 8 caracteres." }
+        val hash = withContext(Dispatchers.Default) { PasswordHasher.hash(nuevaContrasena) }
+        usuarioDao.actualizarContrasena(idUsuario, hash)
+    }
+
+    override suspend fun eliminarCuentaLocal(idUsuario: Int) {
+        database.withTransaction {
+            // Las fotografías se eliminan por FK CASCADE al borrar los avistamientos.
+            database.avistamientoDao().eliminarPorUsuario(idUsuario)
+            usuarioDao.eliminarPorId(idUsuario)
+        }
+    }
 
     private fun fechaActual(): String =
         SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())

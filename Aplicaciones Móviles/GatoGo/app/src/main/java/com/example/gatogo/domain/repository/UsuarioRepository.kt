@@ -11,4 +11,7 @@ interface UsuarioRepository {
     suspend fun insertarUsuario(usuario: Usuario): Long
     suspend fun actualizarUsuario(usuario: Usuario)
     suspend fun eliminarUsuario(usuario: Usuario)
+    suspend fun actualizarNombre(idUsuario: Int, nombre: String)
+    suspend fun actualizarContrasena(idUsuario: Int, nuevaContrasena: String)
+    suspend fun eliminarCuentaLocal(idUsuario: Int)
 }

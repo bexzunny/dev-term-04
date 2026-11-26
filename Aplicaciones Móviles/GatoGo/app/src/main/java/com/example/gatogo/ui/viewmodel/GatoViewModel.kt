@@ -2,6 +2,7 @@ package com.example.gatogo.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.gatogo.R
 import com.example.gatogo.domain.model.Gato
 import com.example.gatogo.domain.repository.GatoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +19,7 @@ import kotlinx.coroutines.launch
 data class RegistroGatoUiState(
     val guardando: Boolean = false,
     val idCreado: Long? = null,
-    val error: String? = null
+    val errorRes: Int? = null
 )
 
 @HiltViewModel
@@ -39,7 +40,7 @@ class GatoViewModel @Inject constructor(
     fun agregarGato(nombre: String, descripcion: String, colores: String) {
         val nombreLimpio = nombre.trim()
         if (nombreLimpio.isEmpty()) {
-            _registroEstado.value = RegistroGatoUiState(error = "El nombre o apodo es obligatorio.")
+            _registroEstado.value = RegistroGatoUiState(errorRes = R.string.error_cat_name_required)
             return
         }
 
@@ -57,7 +58,7 @@ class GatoViewModel @Inject constructor(
                 _registroEstado.value = RegistroGatoUiState(idCreado = id)
             } catch (error: Exception) {
                 _registroEstado.value = RegistroGatoUiState(
-                    error = error.message ?: "No se pudo guardar el gato."
+                    errorRes = R.string.error_save_cat
                 )
             }
         }

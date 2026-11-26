@@ -3,6 +3,7 @@ package com.example.gatogo.ui.viewmodel
 import android.util.Patterns
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.gatogo.R
 import com.example.gatogo.data.repository.ContrasenaNuevaCortaException
 import com.example.gatogo.data.repository.CredencialesIncorrectasException
 import com.example.gatogo.data.repository.CorreoYaRegistradoException
@@ -27,7 +28,7 @@ data class SesionUiState(
 
 data class AccesoUiState(
     val cargando: Boolean = false,
-    val error: String? = null
+    val errorRes: Int? = null
 )
 
 @HiltViewModel
@@ -52,11 +53,11 @@ class UsuarioViewModel @Inject constructor(
     fun iniciarSesionOCrearCuenta(correo: String, password: String) {
         val correoLimpio = correo.trim()
         if (!Patterns.EMAIL_ADDRESS.matcher(correoLimpio).matches()) {
-            _acceso.value = AccesoUiState(error = "Introduce un correo electrónico válido.")
+            _acceso.value = AccesoUiState(errorRes = R.string.error_email_invalid)
             return
         }
         if (password.isBlank()) {
-            _acceso.value = AccesoUiState(error = "Escribe tu contraseña.")
+            _acceso.value = AccesoUiState(errorRes = R.string.error_password_empty)
             return
         }
 
@@ -68,12 +69,12 @@ class UsuarioViewModel @Inject constructor(
                 _acceso.value = AccesoUiState()
             } catch (error: Exception) {
                 val mensaje = when (error) {
-                    is CredencialesIncorrectasException -> error.message
-                    is ContrasenaNuevaCortaException -> error.message
-                    is CorreoYaRegistradoException -> error.message
-                    else -> "No fue posible acceder. Revisa los datos e inténtalo nuevamente."
+                    is CredencialesIncorrectasException -> R.string.error_credentials
+                    is ContrasenaNuevaCortaException -> R.string.error_password_short
+                    is CorreoYaRegistradoException -> R.string.error_email_exists
+                    else -> R.string.error_login_generic
                 }
-                _acceso.value = AccesoUiState(error = mensaje)
+                _acceso.value = AccesoUiState(errorRes = mensaje)
             }
         }
     }
@@ -84,6 +85,24 @@ class UsuarioViewModel @Inject constructor(
 
     fun cerrarSesion() {
         viewModelScope.launch { sesionManager.cerrarSesion() }
+    }
+
+    fun actualizarNombre(idUsuario: Int, nombre: String) {
+        viewModelScope.launch { repository.actualizarNombre(idUsuario, nombre) }
+    }
+
+    fun actualizarContrasena(idUsuario: Int, nuevaContrasena: String) {
+        viewModelScope.launch {
+            runCatching { repository.actualizarContrasena(idUsuario, nuevaContrasena) }
+                .onFailure { _acceso.value = AccesoUiState(errorRes = R.string.error_password_short) }
+        }
+    }
+
+    fun eliminarCuentaLocal(idUsuario: Int) {
+        viewModelScope.launch {
+            repository.eliminarCuentaLocal(idUsuario)
+            sesionManager.cerrarSesion()
+        }
     }
 
     fun obtenerUsuarioPorId(idUsuario: Int) = repository.obtenerUsuarioPorId(idUsuario)

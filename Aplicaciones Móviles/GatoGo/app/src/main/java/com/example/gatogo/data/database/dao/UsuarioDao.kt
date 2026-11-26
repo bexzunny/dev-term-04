@@ -28,4 +28,13 @@ interface UsuarioDao {
 
     @Query("SELECT * FROM usuario WHERE correo = :correo COLLATE NOCASE LIMIT 1")
     suspend fun buscarPorCorreo(correo: String): UsuarioEntity?
+
+    @Query("UPDATE usuario SET nombre = :nombre WHERE id_usuario = :idUsuario")
+    suspend fun actualizarNombre(idUsuario: Int, nombre: String)
+
+    @Query("UPDATE usuario SET pass = :pass WHERE id_usuario = :idUsuario")
+    suspend fun actualizarContrasena(idUsuario: Int, pass: String)
+
+    @Query("DELETE FROM usuario WHERE id_usuario = :idUsuario")
+    suspend fun eliminarPorId(idUsuario: Int)
 }
