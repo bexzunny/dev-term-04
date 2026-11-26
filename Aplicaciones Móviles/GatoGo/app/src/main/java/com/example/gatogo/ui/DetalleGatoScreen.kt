@@ -31,6 +31,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -39,7 +40,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.gatogo.R
-import com.example.gatogo.domain.model.Avistamiento
 import com.example.gatogo.ui.components.ImagenLocal
 import com.example.gatogo.ui.viewmodel.DetalleGatoViewModel
 import kotlin.math.roundToInt
@@ -57,7 +57,12 @@ fun DetalleGatoScreen(
     var mostrarEliminacion by rememberSaveable { mutableStateOf(false) }
     var mostrarEdicion by rememberSaveable { mutableStateOf(false) }
     var descripcionEditada by rememberSaveable { mutableStateOf("") }
-    var avistamientoSeleccionado by remember { mutableStateOf<Avistamiento?>(null) }
+    // Guardamos solo el identificador: un objeto Avistamiento no es Saveable.
+    // Así se puede reconstruir la selección desde los datos observados en Room.
+    var avistamientoSeleccionadoId by rememberSaveable { mutableIntStateOf(-1) }
+    val avistamientoSeleccionado = avistamientos.firstOrNull {
+        it.idAvistamiento == avistamientoSeleccionadoId
+    }
     val resultado by viewModel.resultado.collectAsState()
     val textoResultado = resultado?.let { stringResource(it) }
     val snackbarHostState = remember { SnackbarHostState() }
@@ -138,14 +143,14 @@ fun DetalleGatoScreen(
                                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                                     if (idUsuario == avistamiento.idUsuario) {
                                         TextButton(onClick = {
-                                            avistamientoSeleccionado = avistamiento
+                                            avistamientoSeleccionadoId = avistamiento.idAvistamiento
                                             descripcionEditada = avistamiento.descripcion
                                             mostrarEdicion = true
                                         }) {
                                             Text(stringResource(R.string.detail_edit))
                                         }
                                         TextButton(onClick = {
-                                            avistamientoSeleccionado = avistamiento
+                                            avistamientoSeleccionadoId = avistamiento.idAvistamiento
                                             mostrarEliminacion = true
                                         }) {
                                             Text(stringResource(R.string.detail_delete))
