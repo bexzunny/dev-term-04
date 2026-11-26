@@ -23,8 +23,14 @@ interface GatoDao {
     @Query("SELECT * FROM gato WHERE id_gato = :idGato LIMIT 1")
     fun obtenerGatoPorId(idGato: Int): Flow<GatoEntity?>
 
+    @Query("SELECT * FROM gato WHERE id_gato = :idGato LIMIT 1")
+    suspend fun obtenerGatoUnaVez(idGato: Int): GatoEntity?
+
     @Query("SELECT * FROM gato ORDER BY fecha_registro DESC")
     fun obtenerGatos(): Flow<List<GatoEntity>>
+
+    @Query("DELETE FROM gato WHERE id_gato NOT IN (SELECT DISTINCT id_gato FROM avistamiento)")
+    suspend fun eliminarGatosSinAvistamientos()
 
     @Query("""
         SELECT DISTINCT gato.* FROM gato

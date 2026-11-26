@@ -13,8 +13,12 @@ data class GatoEntity(
     val nombre: String,
     @ColumnInfo(name = "descripcion")
     val descripcion: String,
-    @ColumnInfo(name = "colores")
+    @ColumnInfo(name = "color")
     val colores: String,
     @ColumnInfo(name = "fecha_registro")
-    val fechaRegistro: String
+    val fechaRegistro: String,
+    @ColumnInfo(name = "raza", defaultValue = "''")
+    val raza: String = "",
+    @ColumnInfo(name = "tamano", defaultValue = "''")
+    val tamano: String = ""
 )

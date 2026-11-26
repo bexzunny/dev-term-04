@@ -8,7 +8,9 @@ fun GatoEntity.toDomain(): Gato = Gato(
     nombre = nombre,
     descripcion = descripcion,
     colores = colores,
-    fechaRegistro = fechaRegistro
+    fechaRegistro = fechaRegistro,
+    raza = raza,
+    tamano = tamano
 )
 
 fun Gato.toEntity(): GatoEntity = GatoEntity(
@@ -16,5 +18,7 @@ fun Gato.toEntity(): GatoEntity = GatoEntity(
     nombre = nombre,
     descripcion = descripcion,
     colores = colores,
-    fechaRegistro = fechaRegistro
+    fechaRegistro = fechaRegistro,
+    raza = raza,
+    tamano = tamano
 )

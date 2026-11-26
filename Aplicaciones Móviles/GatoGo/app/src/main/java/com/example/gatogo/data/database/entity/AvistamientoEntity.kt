@@ -35,9 +35,9 @@ data class AvistamientoEntity(
     @ColumnInfo(name = "id_usuario")
     val idUsuario: Int,
     @ColumnInfo(name = "latitud")
-    val latitud: Double,
+    val latitud: Double?,
     @ColumnInfo(name = "longitud")
-    val longitud: Double,
+    val longitud: Double?,
     @ColumnInfo(name = "descripcion")
     val descripcion: String,
     @ColumnInfo(name = "fecha")

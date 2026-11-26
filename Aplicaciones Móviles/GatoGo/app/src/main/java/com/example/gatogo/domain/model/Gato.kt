@@ -5,5 +5,7 @@ data class Gato(
     val nombre: String,
     val descripcion: String,
     val colores: String,
-    val fechaRegistro: String
+    val fechaRegistro: String,
+    val raza: String = "",
+    val tamano: String = ""
 )

@@ -28,4 +28,7 @@ interface AvistamientoDao {
 
     @Query("SELECT * FROM avistamiento WHERE id_gato = :idGato ORDER BY fecha DESC")
     fun obtenerAvistamientosPorGato(idGato: Int): Flow<List<AvistamientoEntity>>
+
+    @Query("DELETE FROM avistamiento WHERE id_usuario = :idUsuario")
+    suspend fun eliminarPorUsuario(idUsuario: Int)
 }
